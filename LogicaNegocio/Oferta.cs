@@ -13,10 +13,8 @@ namespace LogicaNegocio
         private Usuario _usuario;
         private double _monto;
         private DateTime _fecha;
+
+        public Oferta(Usuario usuario, double monto, DateTime fecha) { }
     }
-    
-    public Oferta(Usuario usuario, double monto, DateTime fecha)
-    {
-        _usuario = usuario;
-    }
+
 }
