@@ -36,5 +36,17 @@ namespace LogicaNegocio
                 throw new Exception("El precio de venta debe ser mayor a 0");
             }
         }
+
+        public override bool Equals(object? obj)
+        {
+            bool sonIguales = false;
+            if (obj!=null && obj is Articulo)
+            {
+                Articulo articulo = (Articulo)obj;
+            }
+            
+            
+            return true;
+        }
     }
 }
