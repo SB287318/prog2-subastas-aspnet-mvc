@@ -6,8 +6,13 @@ using System.Threading.Tasks;
 
 namespace LogicaNegocio
 {
-    internal class UsuarioCliente : Usuario
+    public class UsuarioCliente : Usuario
     {
         private double _saldoDisponible;
+
+        public UsuarioCliente(string nombre, string apellido, string email, string contraseña, double saldoDisponible) : base(nombre, apellido, email, contraseña)
+        {
+            _saldoDisponible = saldoDisponible;
+        }
     }
 }

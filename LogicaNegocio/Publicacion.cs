@@ -25,12 +25,11 @@ namespace LogicaNegocio
             _fechaPublicacion = fechaPublicacion;
             _id = Publicacion.s_ultId;
             Publicacion.s_ultId++;
-
         }
 
-        public void AgregarArticulos()
+        public void AgregarArticulo(Articulo articulo)
         {
-
+            _articulos.Add(articulo);
         }
     }
 }

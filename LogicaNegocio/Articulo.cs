@@ -2,7 +2,7 @@
 
 namespace LogicaNegocio
 {
-    internal class Articulo : IValidate
+    public class Articulo : IValidate
     {
         private int _id;
         private static int s_ultId = 1;
