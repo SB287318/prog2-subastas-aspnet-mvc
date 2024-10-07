@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LogicaNegocio.Interface;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LogicaNegocio
 {
-    internal class Usuario
+    internal class Usuario:IValidate
     {
         private int _id;
         private static int s_ultId = 1;
@@ -25,5 +26,24 @@ namespace LogicaNegocio
 
         }
 
+        public void Validar()
+        {
+            if (string.IsNullOrEmpty(_nombre))
+            {
+                throw new Exception("El nombre es obligatorio");
+            }
+            if (string.IsNullOrEmpty(_apellido))
+            {
+                throw new Exception("El apellido es obligatorio");
+            }
+            if (string.IsNullOrEmpty(_email))
+            {
+                throw new Exception("El email es obligatorio");
+            }
+            if (string.IsNullOrEmpty(_contraseña))
+            {
+                throw new Exception("La contraseña es obligatoria");
+            }
+        }
     }
 }

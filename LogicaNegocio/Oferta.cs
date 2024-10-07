@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LogicaNegocio.Interface;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LogicaNegocio
 {
-    internal class Oferta
+    internal class Oferta:IValidate
     {
         private int _id;
         private static int s_ultId;
@@ -14,7 +15,16 @@ namespace LogicaNegocio
         private double _monto;
         private DateTime _fecha;
 
-        public Oferta(Usuario usuario, double monto, DateTime fecha) { }
+        public Oferta(Usuario usuario, double monto, DateTime fecha) { 
+            _usuario = usuario;
+            _monto = monto;
+            _fecha = fecha;
+        }
+
+        public void Validar()
+        {
+            throw new NotImplementedException();
+        }
     }
 
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LogicaNegocio
 {
-    internal abstract class Publicacion
+    public abstract class Publicacion
     {
         private int _id;
         private static int s_ultId;
@@ -17,5 +17,20 @@ namespace LogicaNegocio
         private UsuarioCliente _usuarioClienteComprador;
         private Usuario _usuarioFinalizador;
         private DateTime _fechaFinalizada;
+
+        public Publicacion(string nombre, string estado, DateTime fechaPublicacion)
+        {
+            _nombre = nombre;
+            _estado = estado;
+            _fechaPublicacion = fechaPublicacion;
+            _id = Publicacion.s_ultId;
+            Publicacion.s_ultId++;
+
+        }
+
+        public void AgregarArticulos()
+        {
+
+        }
     }
 }
