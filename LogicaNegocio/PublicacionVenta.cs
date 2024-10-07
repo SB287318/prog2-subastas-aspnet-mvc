@@ -9,5 +9,12 @@ namespace LogicaNegocio
     internal class PublicacionVenta:Publicacion
     {
         private bool _ofertaRelampago;
+
+        //Constructor
+
+        public PublicacionVenta(string nombre, string estado, DateTime fechaPublicacion, bool ofertaRelampago) : base(nombre, estado, fechaPublicacion)
+        {
+            _ofertaRelampago = ofertaRelampago;
+        }
     }
 }
