@@ -43,9 +43,7 @@ namespace LogicaNegocio
             if (obj!=null && obj is Articulo)
             {
                 Articulo articulo = (Articulo)obj;
-            }
-            
-            
+            }            
             return true;
         }
     }

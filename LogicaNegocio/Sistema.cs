@@ -11,14 +11,15 @@ namespace LogicaNegocio
         private List<Usuario> _usuarios = new List<Usuario>();
         private List<Articulo> _articulos = new List<Articulo>();
         private List<Publicacion> _publicaciones = new List<Publicacion>();
-        private List<Oferta> _ofertas = new List<Oferta>();
 
-
+        //Precargas y Altas
 
         public void AltaUsuario(Usuario usuario)
         {
             //valida datos
             //si es valido agregar a lista
+            usuario.Validar();
+            _usuarios.Add(usuario);
         }
 
         public void PrecargarUsuarios() {
@@ -27,7 +28,8 @@ namespace LogicaNegocio
 
         public void AltaArticulo(Articulo articulo)
         {
-
+            articulo.Validar();
+            _articulos.Add(articulo);
         }
 
         public void PrecargaArticulos()
@@ -37,22 +39,13 @@ namespace LogicaNegocio
 
         public void AltaPublicacion(Publicacion publicacion)
         {
-
+            publicacion.Validar();
+            _publicaciones.Add(publicacion);
         }
 
         public void PrecargaPublicaciones()
         {
             AltaPublicacion(new Publicacion());
-        }
-
-        public void AltaOferta(Oferta oferta)
-        {
-
-        }
-
-        public void PrecargaOfertas()
-        {
-            AltaOferta(new Oferta());
         }
 
     }

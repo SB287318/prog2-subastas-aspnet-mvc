@@ -14,7 +14,7 @@ namespace LogicaNegocio
         private string _estado;
         private DateTime _fechaPublicacion;
         private List<Articulo> _articulos = new List<Articulo>();
-        private UsuarioCliente _clienteComprador;
+        private UsuarioCliente _usuarioClienteComprador;
         private Usuario _usuarioFinalizador;
         private DateTime _fechaFinalizada;
     }
