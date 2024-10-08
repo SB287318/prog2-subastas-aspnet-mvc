@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LogicaNegocio
 {
-    internal class PublicacionVenta:Publicacion
+    public class PublicacionVenta:Publicacion
     {
         private bool _ofertaRelampago;
 

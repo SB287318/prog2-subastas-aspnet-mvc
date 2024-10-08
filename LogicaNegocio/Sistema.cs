@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace LogicaNegocio
+﻿namespace LogicaNegocio
 {
     public class Sistema
     {
@@ -12,53 +6,60 @@ namespace LogicaNegocio
         private List<Articulo> _articulos = new List<Articulo>();
         private List<Publicacion> _publicaciones = new List<Publicacion>();
 
-        //Precargas y Altas
-
-        public void AltaUsuario(Usuario usuario)
+        //Constructor
+        public Sistema()
         {
-            //valida datos
-            //si es valido agregar a lista
-            try
-            {
-                usuario.Validar();
-                if (!_usuarios.Contains(usuario))
-                {
-                    _usuarios.Add(usuario);
-                }
-                
-            }
-            catch(Exception ex) 
-            { 
-
-            }
-           
+            PrecargarUsuarios();
         }
 
-        public void PrecargarUsuarios() {
+        //Precargas y Altas
+
+        private void PrecargarUsuarios()
+        {
             AltaUsuario(new Usuario());
         }
 
-        public void AltaArticulo(Articulo articulo)
+        public void AltaUsuario(Usuario usuario)
         {
-            articulo.Validar();
-            _articulos.Add(articulo);
+            try
+            {
+                usuario.Validar();
+                _usuarios.Add(usuario);
+            }
+            catch (Exception ex)
+            {
+                //Que devuelve este catch??
+            }
         }
 
-        public void PrecargaArticulos()
+        public void PrecargarArticulos()
         {
             AltaArticulo(new Articulo());
         }
 
-        public void AltaPublicacion(Publicacion publicacion)
+        public void AltaArticulo(Articulo articulo)
         {
-            publicacion.Validar();
-            _publicaciones.Add(publicacion);
+            try
+            {
+                articulo.Validar();
+                _articulos.Add(articulo);
+            }
+            catch (Exception ex) { }
+           
         }
 
-        public void PrecargaPublicaciones()
+        public void PrecargarPublicaciones()
         {
-            AltaPublicacion(new Publicacion());
+            AltaPublicacionVenta(new PublicacionVenta());
         }
 
+
+        public void AltaPublicacionVenta(PublicacionVenta publicacionVenta)
+        {
+            publicacionVenta.Validar();
+            _publicaciones.Add(publicacionVenta);
+        }
+
+       
     }
 }
