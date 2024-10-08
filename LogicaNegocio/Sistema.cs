@@ -18,8 +18,20 @@ namespace LogicaNegocio
         {
             //valida datos
             //si es valido agregar a lista
-            usuario.Validar();
-            _usuarios.Add(usuario);
+            try
+            {
+                usuario.Validar();
+                if (!_usuarios.Contains(usuario))
+                {
+                    _usuarios.Add(usuario);
+                }
+                
+            }
+            catch(Exception ex) 
+            { 
+
+            }
+           
         }
 
         public void PrecargarUsuarios() {

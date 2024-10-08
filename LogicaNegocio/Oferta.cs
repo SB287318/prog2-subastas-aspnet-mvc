@@ -25,7 +25,10 @@ namespace LogicaNegocio
 
         public void Validar()
         {
-            throw new NotImplementedException();
+            if (_usuario != null && _usuario is Usuario)
+            {
+                
+            }
         }
     }
 

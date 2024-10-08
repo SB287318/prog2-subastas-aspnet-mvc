@@ -1,4 +1,6 @@
-﻿namespace InterfazUsuario
+﻿using LogicaNegocio;
+
+namespace InterfazUsuario
 {
     internal class Program
     {
