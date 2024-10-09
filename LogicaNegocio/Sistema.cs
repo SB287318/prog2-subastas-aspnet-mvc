@@ -153,18 +153,19 @@
         }
 
 
-        //Falta chequear que los buscadores no te devuelvan nulo o que el articulo no exista en la publicacion
+        //Falta chequear por errores
         private void AgregarArticuloAPublicacion(int idArticulo, int idPublicacion)
         {
             Articulo articulo = BuscarArticulo(idArticulo);
+            Publicacion publicacion = BuscarPublicacion(idPublicacion);
             try
             {
-                if (articulo != null && ) 
-                { }
+                if (publicacion != null && articulo != null && !publicacion.ContieneArticulo(articulo))
+                {
+                    publicacion.AgregarArticulo(articulo);
+                }
             }
-            Publicacion publicacion = BuscarPublicacion(idPublicacion);
-
-            publicacion.AgregarArticulo(articulo);
+            catch { }
         }
 
 
@@ -173,7 +174,7 @@
             Articulo articuloBuscado = null;
             foreach (Articulo articulo in _articulos)
             {
-                
+
                 if (articulo.Id == idArticulo)
                 {
                     articuloBuscado = articulo;
@@ -182,7 +183,7 @@
             return articuloBuscado;
         }
 
-        public Publicacion BuscarPublicacion(int idPublicacion) 
+        public Publicacion BuscarPublicacion(int idPublicacion)
         {
             Publicacion publicacionBuscada = null;
             foreach (Publicacion publicacion in _publicaciones)

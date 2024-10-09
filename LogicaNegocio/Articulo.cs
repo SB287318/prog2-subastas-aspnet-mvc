@@ -2,7 +2,7 @@
 
 namespace LogicaNegocio
 {
-    public class Articulo : IValidate
+    public class Articulo : IValidate, IEquatable<Articulo>
     {
         private int _id;
         private static int s_ultId = 1;
@@ -52,6 +52,11 @@ namespace LogicaNegocio
             {
                 throw new Exception("El precio de venta debe ser mayor a 0");
             }
+        }
+
+        public bool Equals(Articulo? other)
+        {
+            return _id == other._id;
         }
     }
 }

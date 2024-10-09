@@ -55,6 +55,16 @@ namespace LogicaNegocio
             _articulos.Add(articulo);
         }
 
+        public bool ContieneArticulo(Articulo articulo)
+        {
+            bool resultado = false;
+            if (_articulos.Contains(articulo))
+            {
+                resultado = true;
+            }
+            return resultado;
+        }
+
         /// <summary>
         /// Validacion
         /// </summary>
