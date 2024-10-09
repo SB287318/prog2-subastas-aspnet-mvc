@@ -116,7 +116,6 @@
             AltaArticulo(new Articulo("Cuadro Decorativo", "Decoración", 60.50));
             AltaArticulo(new Articulo("Florero", "Decoración", 20.99));
             AltaArticulo(new Articulo("Planta Artificial", "Decoración", 15.75));
-
         }
 
         public void AltaArticulo(Articulo articulo)
@@ -132,31 +131,91 @@
 
         private void PrecargarPublicacionesVenta()
         {
-            AltaPublicacionVenta(new PublicacionVenta("Venta de Laptop", "ABIERTA", new DateTime(2024, 10, 01), false));
-            AltaPublicacionVenta(new PublicacionVenta("Venta de Smartphone", "ABIERTA", new DateTime(2024, 10, 02), true));
-            AltaPublicacionVenta(new PublicacionVenta("Venta de Bicicleta", "ABIERTA", new DateTime(2024, 10, 03), false));
-            AltaPublicacionVenta(new PublicacionVenta("Venta de Auriculares", "ABIERTA", new DateTime(2024, 10, 04), true));
-            AltaPublicacionVenta(new PublicacionVenta("Venta de Televisor 4K", "ABIERTA", new DateTime(2024, 10, 05), false));
-            AltaPublicacionVenta(new PublicacionVenta("Venta de Impresora Láser", "ABIERTA", new DateTime(2024, 10, 06), true));
-            AltaPublicacionVenta(new PublicacionVenta("Venta de Tablet", "ABIERTA", new DateTime(2024, 10, 07), false));
-            AltaPublicacionVenta(new PublicacionVenta("Venta de Cámara Digital", "ABIERTA", new DateTime(2024, 10, 08), true));
-            AltaPublicacionVenta(new PublicacionVenta("Venta de Silla Gamer", "ABIERTA", new DateTime(2024, 10, 09), false));
-            AltaPublicacionVenta(new PublicacionVenta("Venta de Reloj Inteligente", "ABIERTA", new DateTime(2024, 10, 10), true));
+            try
+            {
 
+                AltaPublicacionVenta(new PublicacionVenta("Electroparaiso", "ABIERTA", new DateTime(2024, 10, 01), BuscarArticulo(1), false));
+                AgregarArticuloAPublicacion(1, 2);
+
+                AltaPublicacionVenta(new PublicacionVenta("Momento GAMER", "ABIERTA", new DateTime(2024, 10, 02), BuscarArticulo(8), true));
+                AgregarArticuloAPublicacion(2, 13);
+
+                AltaPublicacionVenta(new PublicacionVenta("Transporte", "ABIERTA", new DateTime(2024, 10, 03), BuscarArticulo(11), false));
+                AgregarArticuloAPublicacion(3, 12);
+
+
+                AltaPublicacionVenta(new PublicacionVenta("Muebles", "ABIERTA", new DateTime(2024, 10, 04), BuscarArticulo(14), true));
+                AgregarArticuloAPublicacion(4, 16);
+                AgregarArticuloAPublicacion(4, 17);
+
+
+                AltaPublicacionVenta(new PublicacionVenta("A la moda", "ABIERTA", new DateTime(2024, 10, 05), BuscarArticulo(18), false));
+                AgregarArticuloAPublicacion(5, 19);
+                AgregarArticuloAPublicacion(5, 20);
+                AgregarArticuloAPublicacion(5, 21);
+
+
+                AltaPublicacionVenta(new PublicacionVenta("Accesorios", "ABIERTA", new DateTime(2024, 10, 06), BuscarArticulo(22), true));
+                AgregarArticuloAPublicacion(6, 23);
+                AgregarArticuloAPublicacion(6, 24);
+                AgregarArticuloAPublicacion(6, 25);
+
+                AltaPublicacionVenta(new PublicacionVenta("Cocina", "ABIERTA", new DateTime(2024, 10, 07), BuscarArticulo(26), false));
+                AgregarArticuloAPublicacion(7, 27);
+
+                AltaPublicacionVenta(new PublicacionVenta("Desalluno", "ABIERTA", new DateTime(2024, 10, 08), BuscarArticulo(28), true));
+                AgregarArticuloAPublicacion(8, 29);
+
+                AltaPublicacionVenta(new PublicacionVenta("Electrodomesticos", "ABIERTA", new DateTime(2024, 10, 09), BuscarArticulo(30), false));
+                AgregarArticuloAPublicacion(9, 31);
+                AgregarArticuloAPublicacion(9, 32);
+                AgregarArticuloAPublicacion(9, 33);
+                AgregarArticuloAPublicacion(9, 34);
+                AgregarArticuloAPublicacion(9, 35);
+
+                AltaPublicacionVenta(new PublicacionVenta("Bellizimo", "ABIERTA", new DateTime(2024, 10, 10), BuscarArticulo(38), true));
+                AgregarArticuloAPublicacion(10, 39);
+                AgregarArticuloAPublicacion(10, 40);
+            }
+            catch { }
         }
 
 
         public void AltaPublicacionVenta(PublicacionVenta publicacionVenta)
         {
-            publicacionVenta.Validar();
-            _publicaciones.Add(publicacionVenta);
+            try
+            {
+                publicacionVenta.Validar();
+                _publicaciones.Add(publicacionVenta);
+            }
+            catch { }
         }
 
-
-        private void AgregarArticuloAPublicacion(int idArticulo, int idPublicacion)
+        private void PrecargarPublicacionesSubasta()
         {
-            Articulo articulo = BuscarArticulo(idArticulo);
+
+        }
+
+        public void AltaPublicacionSubasta(PublicacionSubasta publicacionSubasta)
+        {
+            try
+            {
+                publicacionSubasta.Validar();
+                _publicaciones.Add(publicacionSubasta);
+            }
+            catch { }
+        }
+
+        /// <summary>
+        /// Agrega Articulo a Publicacion
+        /// </summary>
+        /// <param name="idPublicacion"></param>
+        /// <param name="idArticulo"></param>
+
+        private void AgregarArticuloAPublicacion(int idPublicacion, int idArticulo)
+        {
             Publicacion publicacion = BuscarPublicacion(idPublicacion);
+            Articulo articulo = BuscarArticulo(idArticulo);
             try
             {
                 if (publicacion != null && articulo != null && !publicacion.ContieneArticulo(articulo))
