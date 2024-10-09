@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LogicaNegocio
 {
-    public class Usuario:IValidate
+    public class Usuario : IValidate
     {
         private int _id;
         private static int s_ultId = 1;

@@ -26,11 +26,12 @@ namespace LogicaNegocio
         /// <param name="estado"></param>
         /// <param name="fechaPublicacion"></param>
 
-        public Publicacion(string nombre, string estado, DateTime fechaPublicacion)
+        public Publicacion(string nombre, string estado, DateTime fechaPublicacion, Articulo articulo)
         {
             _nombre = nombre;
             _estado = estado;
             _fechaPublicacion = fechaPublicacion;
+            _articulos.Add(articulo);
             _id = Publicacion.s_ultId;
             Publicacion.s_ultId++;
         }
@@ -63,6 +64,10 @@ namespace LogicaNegocio
             if (_fechaPublicacion <= DateTime.MinValue)
             {
                 throw new Exception("La fecha de publicacion es obligatoria");
+            }
+            if (_articulos == null)
+            {
+                throw new Exception("El articulo es obligatorio");
             }
         }
     }
