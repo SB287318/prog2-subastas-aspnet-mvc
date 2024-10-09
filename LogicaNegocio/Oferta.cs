@@ -15,7 +15,12 @@ namespace LogicaNegocio
         private double _monto;
         private DateTime _fecha;
 
-        //Constructor
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="usuario"></param>
+        /// <param name="monto"></param>
+        /// <param name="fecha"></param>
 
         public Oferta(Usuario usuario, double monto, DateTime fecha) { 
             _usuario = usuario;
@@ -23,11 +28,16 @@ namespace LogicaNegocio
             _fecha = fecha;
         }
 
+        /// <summary>
+        /// Validacion
+        /// </summary>
+        /// <exception cref="Exception"></exception>
+
         public void Validar()
         {
-            if (_usuario != null && _usuario is Usuario)
+            if (_usuario == null)
             {
-                
+                throw new Exception("El usuario es obligatorio");
             }
         }
     }

@@ -16,7 +16,13 @@ namespace LogicaNegocio
         private string _email;
         private string _contraseña;
 
-        //Contsructor
+        /// <summary>
+        /// Contsructor
+        /// </summary>
+        /// <param name="nombre"></param>
+        /// <param name="apellido"></param>
+        /// <param name="email"></param>
+        /// <param name="contraseña"></param>
 
         public Usuario(string nombre, string apellido, string email, string contraseña) {
             _nombre = nombre;
@@ -28,7 +34,10 @@ namespace LogicaNegocio
 
         }
 
-        //Validacion
+        /// <summary>
+        /// Validacion
+        /// </summary>
+        /// <exception cref="Exception"></exception>
 
         public void Validar()
         {

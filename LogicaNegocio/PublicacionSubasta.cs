@@ -6,15 +6,25 @@ using System.Threading.Tasks;
 
 namespace LogicaNegocio
 {
-    public class PublicacionSubasta:Publicacion
+    public class PublicacionSubasta : Publicacion
     {
         private List<Oferta> _ofertas = new List<Oferta>();
 
-        //Constructor
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="nombre"></param>
+        /// <param name="estado"></param>
+        /// <param name="fechaPublicacion"></param>
 
         public PublicacionSubasta(string nombre, string estado, DateTime fechaPublicacion) : base(nombre, estado, fechaPublicacion)
         {
         }
+
+        /// <summary>
+        /// Agregar ofertas
+        /// </summary>
+        /// <param name="oferta"></param>
 
         public void AgregarOferta(Oferta oferta)
         {

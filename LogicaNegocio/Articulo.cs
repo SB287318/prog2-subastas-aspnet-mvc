@@ -10,7 +10,12 @@ namespace LogicaNegocio
         private string _categoria;
         private double _precioVenta;
 
-        ///Constructor///
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="nombre"></param>
+        /// <param name="categoria"></param>
+        /// <param name="precioVenta"></param>
         public Articulo(string nombre, string categoria, double precioVenta)
         {
             _nombre = nombre;
@@ -20,7 +25,10 @@ namespace LogicaNegocio
             Articulo.s_ultId++;
         }
 
-        /// Validacion de datos 
+        /// <summary>
+        /// Validacion
+        /// </summary>
+        /// <exception cref="Exception"></exception>
         public void Validar()
         {
             if (string.IsNullOrEmpty(_nombre))
@@ -35,16 +43,6 @@ namespace LogicaNegocio
             {
                 throw new Exception("El precio de venta debe ser mayor a 0");
             }
-        }
-
-        public override bool Equals(object? obj)
-        {
-            bool sonIguales = false;
-            if (obj!=null && obj is Articulo)
-            {
-                Articulo articulo = (Articulo)obj;
-            }            
-            return true;
         }
     }
 }

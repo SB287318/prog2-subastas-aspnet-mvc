@@ -28,7 +28,6 @@
             }
             catch (Exception ex)
             {
-                //Que devuelve este catch??
             }
         }
 
