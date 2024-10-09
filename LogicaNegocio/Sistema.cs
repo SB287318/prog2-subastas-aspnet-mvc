@@ -132,7 +132,17 @@
 
         private void PrecargarPublicacionesVenta()
         {
-            AltaPublicacionVenta(new PublicacionVenta());
+            AltaPublicacionVenta(new PublicacionVenta("Venta de Laptop", "ABIERTA", new DateTime(2024, 10, 01), false));
+            AltaPublicacionVenta(new PublicacionVenta("Venta de Smartphone", "ABIERTA", new DateTime(2024, 10, 02), true));
+            AltaPublicacionVenta(new PublicacionVenta("Venta de Bicicleta", "ABIERTA", new DateTime(2024, 10, 03), false));
+            AltaPublicacionVenta(new PublicacionVenta("Venta de Auriculares", "ABIERTA", new DateTime(2024, 10, 04), true));
+            AltaPublicacionVenta(new PublicacionVenta("Venta de Televisor 4K", "ABIERTA", new DateTime(2024, 10, 05), false));
+            AltaPublicacionVenta(new PublicacionVenta("Venta de Impresora Láser", "ABIERTA", new DateTime(2024, 10, 06), true));
+            AltaPublicacionVenta(new PublicacionVenta("Venta de Tablet", "ABIERTA", new DateTime(2024, 10, 07), false));
+            AltaPublicacionVenta(new PublicacionVenta("Venta de Cámara Digital", "ABIERTA", new DateTime(2024, 10, 08), true));
+            AltaPublicacionVenta(new PublicacionVenta("Venta de Silla Gamer", "ABIERTA", new DateTime(2024, 10, 09), false));
+            AltaPublicacionVenta(new PublicacionVenta("Venta de Reloj Inteligente", "ABIERTA", new DateTime(2024, 10, 10), true));
+
         }
 
 
@@ -142,6 +152,16 @@
             _publicaciones.Add(publicacionVenta);
         }
 
+        public Articulo BuscarArticulo(int id) 
+        { 
+            foreach(Articulo articulo in _articulos)
+            {
+                if (articulo._id )
+                {
+                    
+                }
+            }
+        }
 
     }
 }

@@ -19,7 +19,7 @@ namespace LogicaNegocio
         /// <param name="fechaPublicacion"></param>
         /// <param name="ofertaRelampago"></param>
 
-        public PublicacionVenta(string nombre, string estado, DateTime fechaPublicacion, bool ofertaRelampago) : base(nombre, estado, fechaPublicacion)
+        public PublicacionVenta(string nombre, string estado, DateTime fechaPublicacion, Articulo articulo, bool ofertaRelampago) : base(nombre, estado, fechaPublicacion, articulo)
         {
             _ofertaRelampago = ofertaRelampago;
         }

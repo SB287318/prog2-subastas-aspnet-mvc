@@ -17,7 +17,7 @@ namespace LogicaNegocio
         /// <param name="estado"></param>
         /// <param name="fechaPublicacion"></param>
 
-        public PublicacionSubasta(string nombre, string estado, DateTime fechaPublicacion) : base(nombre, estado, fechaPublicacion)
+        public PublicacionSubasta(string nombre, string estado, DateTime fechaPublicacion, Articulo articulo) : base(nombre, estado, fechaPublicacion, articulo)
         {
         }
 

@@ -69,6 +69,10 @@ namespace LogicaNegocio
             {
                 throw new Exception("El articulo es obligatorio");
             }
+            if (_articulos.Count < 2)
+            {
+                throw new Exception("Debe tener mas de un articulo");
+            }
         }
     }
 }
