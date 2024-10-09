@@ -26,6 +26,15 @@ namespace LogicaNegocio
         }
 
         /// <summary>
+        /// Accesores
+        /// </summary>
+
+        public int Id
+        { 
+            get { return _id; } 
+        }
+
+        /// <summary>
         /// Validacion
         /// </summary>
         /// <exception cref="Exception"></exception>

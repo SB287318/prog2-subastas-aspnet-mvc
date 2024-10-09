@@ -37,6 +37,15 @@ namespace LogicaNegocio
         }
 
         /// <summary>
+        /// Accesores
+        /// </summary>
+
+        public int Id
+        {
+            get { return _id; }
+        }
+
+        /// <summary>
         /// Añadir articulos
         /// </summary>
         /// <param name="articulo"></param>

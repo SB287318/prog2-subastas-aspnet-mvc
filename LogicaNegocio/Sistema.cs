@@ -152,16 +152,48 @@
             _publicaciones.Add(publicacionVenta);
         }
 
-        public Articulo BuscarArticulo(int id) 
-        { 
-            foreach(Articulo articulo in _articulos)
+
+        //Falta chequear que los buscadores no te devuelvan nulo o que el articulo no exista en la publicacion
+        private void AgregarArticuloAPublicacion(int idArticulo, int idPublicacion)
+        {
+            Articulo articulo = BuscarArticulo(idArticulo);
+            try
             {
-                if (articulo._id )
-                {
-                    
-                }
+                if (articulo != null && ) 
+                { }
             }
+            Publicacion publicacion = BuscarPublicacion(idPublicacion);
+
+            publicacion.AgregarArticulo(articulo);
         }
 
+
+        public Articulo BuscarArticulo(int idArticulo)
+        {
+            Articulo articuloBuscado = null;
+            foreach (Articulo articulo in _articulos)
+            {
+                
+                if (articulo.Id == idArticulo)
+                {
+                    articuloBuscado = articulo;
+                }
+            }
+            return articuloBuscado;
+        }
+
+        public Publicacion BuscarPublicacion(int idPublicacion) 
+        {
+            Publicacion publicacionBuscada = null;
+            foreach (Publicacion publicacion in _publicaciones)
+            {
+
+                if (publicacion.Id == idPublicacion)
+                {
+                    publicacionBuscada = publicacion;
+                }
+            }
+            return publicacionBuscada;
+        }
     }
 }
