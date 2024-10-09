@@ -153,7 +153,6 @@
         }
 
 
-        //Falta chequear por errores
         private void AgregarArticuloAPublicacion(int idArticulo, int idPublicacion)
         {
             Articulo articulo = BuscarArticulo(idArticulo);
@@ -168,6 +167,11 @@
             catch { }
         }
 
+        /// <summary>
+        /// Busca y devuelve un Articulo de _articulos por su Id
+        /// </summary>
+        /// <param name="idArticulo"></param>
+        /// <returns></returns>
 
         public Articulo BuscarArticulo(int idArticulo)
         {
@@ -182,6 +186,12 @@
             }
             return articuloBuscado;
         }
+
+        /// <summary>
+        /// Busca y devuelve una Publicacion en _pulicaciones segun un Id
+        /// </summary>
+        /// <param name="idPublicacion"></param>
+        /// <returns></returns>
 
         public Publicacion BuscarPublicacion(int idPublicacion)
         {

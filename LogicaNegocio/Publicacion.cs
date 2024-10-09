@@ -46,7 +46,7 @@ namespace LogicaNegocio
         }
 
         /// <summary>
-        /// Añadir articulos
+        /// Agregar articulos
         /// </summary>
         /// <param name="articulo"></param>
 
@@ -54,6 +54,12 @@ namespace LogicaNegocio
         {
             _articulos.Add(articulo);
         }
+
+        /// <summary>
+        /// Devuelve True o False segun si el Articulo esta en la Publicacion
+        /// </summary>
+        /// <param name="articulo"></param>
+        /// <returns></returns>
 
         public bool ContieneArticulo(Articulo articulo)
         {
