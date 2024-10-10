@@ -137,45 +137,44 @@
                 AltaPublicacionVenta(new PublicacionVenta("Electroparaiso", "ABIERTA", new DateTime(2024, 10, 01), BuscarArticulo(1), false));
                 AgregarArticuloAPublicacion(1, 2);
 
-                AltaPublicacionVenta(new PublicacionVenta("Momento GAMER", "ABIERTA", new DateTime(2024, 10, 02), BuscarArticulo(8), true));
-                AgregarArticuloAPublicacion(2, 13);
+                AltaPublicacionVenta(new PublicacionVenta("Fotogenico", "ABIERTA", new DateTime(2024, 10, 02), BuscarArticulo(3), true));
+                AgregarArticuloAPublicacion(2, 4);
 
-                AltaPublicacionVenta(new PublicacionVenta("Transporte", "ABIERTA", new DateTime(2024, 10, 03), BuscarArticulo(11), false));
-                AgregarArticuloAPublicacion(3, 12);
-
-
-                AltaPublicacionVenta(new PublicacionVenta("Muebles", "ABIERTA", new DateTime(2024, 10, 04), BuscarArticulo(14), true));
-                AgregarArticuloAPublicacion(4, 16);
-                AgregarArticuloAPublicacion(4, 17);
+                AltaPublicacionVenta(new PublicacionVenta("Accesorio Inteligente", "ABIERTA", new DateTime(2024, 10, 03), BuscarArticulo(5), false));
+                AgregarArticuloAPublicacion(3, 6);
 
 
-                AltaPublicacionVenta(new PublicacionVenta("A la moda", "ABIERTA", new DateTime(2024, 10, 05), BuscarArticulo(18), false));
-                AgregarArticuloAPublicacion(5, 19);
-                AgregarArticuloAPublicacion(5, 20);
-                AgregarArticuloAPublicacion(5, 21);
+                AltaPublicacionVenta(new PublicacionVenta("Periferico compu", "ABIERTA", new DateTime(2024, 10, 04), BuscarArticulo(7), true));
+                AgregarArticuloAPublicacion(4, 8);
 
 
-                AltaPublicacionVenta(new PublicacionVenta("Accesorios", "ABIERTA", new DateTime(2024, 10, 06), BuscarArticulo(22), true));
-                AgregarArticuloAPublicacion(6, 23);
-                AgregarArticuloAPublicacion(6, 24);
-                AgregarArticuloAPublicacion(6, 25);
+                AltaPublicacionVenta(new PublicacionVenta("Homeoffice", "ABIERTA", new DateTime(2024, 10, 05), BuscarArticulo(9), false));
+                AgregarArticuloAPublicacion(5, 10);
 
-                AltaPublicacionVenta(new PublicacionVenta("Cocina", "ABIERTA", new DateTime(2024, 10, 07), BuscarArticulo(26), false));
-                AgregarArticuloAPublicacion(7, 27);
 
-                AltaPublicacionVenta(new PublicacionVenta("Desalluno", "ABIERTA", new DateTime(2024, 10, 08), BuscarArticulo(28), true));
-                AgregarArticuloAPublicacion(8, 29);
+                AltaPublicacionVenta(new PublicacionVenta("Transporte", "ABIERTA", new DateTime(2024, 10, 06), BuscarArticulo(11), true));
+                AgregarArticuloAPublicacion(6, 12);
 
-                AltaPublicacionVenta(new PublicacionVenta("Electrodomesticos", "ABIERTA", new DateTime(2024, 10, 09), BuscarArticulo(30), false));
-                AgregarArticuloAPublicacion(9, 31);
-                AgregarArticuloAPublicacion(9, 32);
-                AgregarArticuloAPublicacion(9, 33);
-                AgregarArticuloAPublicacion(9, 34);
-                AgregarArticuloAPublicacion(9, 35);
+                AltaPublicacionVenta(new PublicacionVenta("Muebles", "ABIERTA", new DateTime(2024, 10, 07), BuscarArticulo(13), false));
+                AgregarArticuloAPublicacion(7, 14);
+                AgregarArticuloAPublicacion(7, 16);
+                AgregarArticuloAPublicacion(7, 17);
 
-                AltaPublicacionVenta(new PublicacionVenta("Bellizimo", "ABIERTA", new DateTime(2024, 10, 10), BuscarArticulo(38), true));
-                AgregarArticuloAPublicacion(10, 39);
-                AgregarArticuloAPublicacion(10, 40);
+
+                AltaPublicacionVenta(new PublicacionVenta("Ropa", "ABIERTA", new DateTime(2024, 10, 08), BuscarArticulo(18), true));
+                AgregarArticuloAPublicacion(8, 19);
+                AgregarArticuloAPublicacion(8, 20);
+                AgregarArticuloAPublicacion(8, 21);
+
+
+                AltaPublicacionVenta(new PublicacionVenta("A la moda", "ABIERTA", new DateTime(2024, 10, 09), BuscarArticulo(22), false));
+                AgregarArticuloAPublicacion(9, 23);
+                AgregarArticuloAPublicacion(9, 24);
+                AgregarArticuloAPublicacion(9, 25);
+
+
+                AltaPublicacionVenta(new PublicacionVenta("Cocina", "ABIERTA", new DateTime(2024, 10, 10), BuscarArticulo(26), true));
+                AgregarArticuloAPublicacion(10, 27);
             }
             catch { }
         }
@@ -193,7 +192,48 @@
 
         private void PrecargarPublicacionesSubasta()
         {
+            try
+            {
+                AltaPublicacionSubasta(new PublicacionSubasta("Buena mañana", "ABIERTA", new DateTime(2024, 10, 01), BuscarArticulo(28)));
+                AgregarArticuloAPublicacion(11, 29);
 
+
+                AltaPublicacionSubasta(new PublicacionSubasta("Electrodomesticos", "ABIERTA", new DateTime(2024, 10, 02), BuscarArticulo(30)));
+                AgregarArticuloAPublicacion(12, 32);
+
+
+                AltaPublicacionSubasta(new PublicacionSubasta("Limpieza", "ABIERTA", new DateTime(2024, 10, 03), BuscarArticulo(31)));
+                AgregarArticuloAPublicacion(13, 33);
+                AgregarArticuloAPublicacion(13, 34);
+
+
+                AltaPublicacionSubasta(new PublicacionSubasta("Mejora de cocina", "ABIERTA", new DateTime(2024, 10, 04), BuscarArticulo(35)));
+                AgregarArticuloAPublicacion(14, 35);
+                AgregarArticuloAPublicacion(14, 36);
+                AgregarArticuloAPublicacion(14, 37);
+
+                AltaPublicacionSubasta(new PublicacionSubasta("Para el pelo", "ABIERTA", new DateTime(2024, 10, 05), BuscarArticulo(39)));
+                AgregarArticuloAPublicacion(15, 39);
+
+
+
+                AltaPublicacionSubasta(new PublicacionSubasta("Belleza", "ABIERTA", new DateTime(2024, 10, 06), BuscarArticulo(40)));
+                AgregarArticuloAPublicacion(16, 41);
+
+                AltaPublicacionSubasta(new PublicacionSubasta("Hogar", "ABIERTA", new DateTime(2024, 10, 07), BuscarArticulo(42)));
+                AgregarArticuloAPublicacion(17, 43);
+
+                AltaPublicacionSubasta(new PublicacionSubasta("Decoracion", "ABIERTA", new DateTime(2024, 10, 08), BuscarArticulo(44)));
+                AgregarArticuloAPublicacion(18, 45);
+
+                AltaPublicacionSubasta(new PublicacionSubasta("Decoracion 2", "ABIERTA", new DateTime(2024, 10, 09), BuscarArticulo(46)));
+                AgregarArticuloAPublicacion(19, 47);
+
+                AltaPublicacionSubasta(new PublicacionSubasta("Decoracion 3", "ABIERTA", new DateTime(2024, 10, 10), BuscarArticulo(48)));
+                AgregarArticuloAPublicacion(20, 49);
+
+            }
+            catch { }
         }
 
         public void AltaPublicacionSubasta(PublicacionSubasta publicacionSubasta)
