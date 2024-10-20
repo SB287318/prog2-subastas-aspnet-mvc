@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace LogicaNegocio
+﻿namespace LogicaNegocio
 {
     public class PublicacionSubasta : Publicacion
     {
@@ -22,13 +16,23 @@ namespace LogicaNegocio
         }
 
         /// <summary>
-        /// Agregar ofertas
+        /// Agregar oferta
         /// </summary>
         /// <param name="oferta"></param>
 
-        public void AgregarOferta(Oferta oferta)
+        public void AltaOferta(Usuario usuario, double monto, DateTime fecha)
         {
-            _ofertas.Add(oferta);
+            try
+            {
+
+                Oferta oferta = new Oferta(usuario, monto, fecha);
+                oferta.Validar();
+                if (!_ofertas.Contains(oferta))
+                {
+                    _ofertas.Add(oferta);
+                }
+            }
+            catch { }
         }
     }
 }

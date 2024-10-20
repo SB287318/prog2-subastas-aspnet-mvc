@@ -26,6 +26,15 @@ namespace LogicaNegocio
         }
 
         /// <summary>
+        /// Accesores
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            return "["+Id+"] - "+Nombre+" "+Apellido;
+        }
+
+        /// <summary>
         /// Validacion
         /// </summary>
         /// <exception cref="Exception"></exception>
@@ -39,5 +48,6 @@ namespace LogicaNegocio
                 throw new Exception("El saldo debe tener un minimo de 0");
             }
         }
+
     }
 }

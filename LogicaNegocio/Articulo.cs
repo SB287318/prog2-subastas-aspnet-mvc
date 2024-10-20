@@ -34,6 +34,16 @@ namespace LogicaNegocio
             get { return _id; } 
         }
 
+        public string Categoria
+        {
+            get { return _categoria; }
+        }
+
+        public override string ToString() 
+        {
+            return "Id: " + _id + "\nNombre: " + _nombre + "\nPrecio de venta: " + _precioVenta;
+        }
+
         /// <summary>
         /// Validacion
         /// </summary>

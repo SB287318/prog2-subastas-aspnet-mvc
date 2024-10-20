@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LogicaNegocio
 {
-    public class Usuario : IValidate
+    public class Usuario : IValidate, IEquatable<Usuario>
     {
         private int _id;
         private static int s_ultId = 1;
@@ -35,6 +35,25 @@ namespace LogicaNegocio
         }
 
         /// <summary>
+        /// Accesores
+        /// </summary>
+
+        public int Id
+        {
+            get { return _id; }
+        }
+
+        public string Nombre
+        {
+            get { return _nombre; }
+        }
+        public string Apellido
+        {
+            get { return _apellido; }
+        }
+
+
+        /// <summary>
         /// Validacion
         /// </summary>
         /// <exception cref="Exception"></exception>
@@ -57,6 +76,11 @@ namespace LogicaNegocio
             {
                 throw new Exception("La contraseña es obligatoria");
             }
+        }
+
+        public bool Equals(Usuario? other)
+        {
+            return _id == other._id;
         }
     }
 }

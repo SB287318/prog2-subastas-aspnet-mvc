@@ -15,6 +15,7 @@
             PrecargarUsuariosCliente();
             PrecargarArticulos();
             PrecargarPublicacionesVenta();
+            PrecargarPublicacionesSubasta();
         }
 
         /// <summary>
@@ -31,10 +32,13 @@
         {
             try
             {
-                usuario.Validar();
-                _usuarios.Add(usuario);
+                if (!_usuarios.Contains(usuario))
+                {
+                    usuario.Validar();
+                    _usuarios.Add(usuario);
+                }
             }
-            catch (Exception ex)
+            catch
             {
             }
         }
@@ -57,10 +61,13 @@
         {
             try
             {
-                usuarioCliente.Validar();
-                _usuarios.Add(usuarioCliente);
+                if (!_usuarios.Contains(usuarioCliente))
+                {
+                    usuarioCliente.Validar();
+                    _usuarios.Add(usuarioCliente);
+                }
             }
-            catch (Exception ex)
+            catch
             {
             }
         }
@@ -122,10 +129,15 @@
         {
             try
             {
-                articulo.Validar();
-                _articulos.Add(articulo);
+                if (!_articulos.Contains(articulo))
+                {
+                    articulo.Validar();
+                    _articulos.Add(articulo);
+                }
             }
-            catch (Exception ex) { }
+            catch
+            {
+            }
 
         }
 
@@ -184,10 +196,15 @@
         {
             try
             {
-                publicacionVenta.Validar();
-                _publicaciones.Add(publicacionVenta);
+                if (!_publicaciones.Contains(publicacionVenta))
+                {
+                    publicacionVenta.Validar();
+                    _publicaciones.Add(publicacionVenta);
+                }
             }
-            catch { }
+            catch
+            {
+            }
         }
 
         private void PrecargarPublicacionesSubasta()
@@ -240,10 +257,42 @@
         {
             try
             {
-                publicacionSubasta.Validar();
-                _publicaciones.Add(publicacionSubasta);
+                if (!_publicaciones.Contains(publicacionSubasta))
+                {
+                    publicacionSubasta.Validar();
+                    _publicaciones.Add(publicacionSubasta);
+                }
             }
-            catch { }
+            catch
+            {
+            }
+        }
+
+        private void PrecargarOfertasAPublicacionesSubasta()
+        {
+            AgregarOfertaAPublicacionSubasta(15, BuscarUsuario(3), 950.45, new DateTime(2024, 10, 10));
+            AgregarOfertaAPublicacionSubasta(15, BuscarUsuario(4), 1200.85, new DateTime(2024, 10, 06));
+            AgregarOfertaAPublicacionSubasta(15, BuscarUsuario(5), 900.45, new DateTime(2024, 10, 08));
+            AgregarOfertaAPublicacionSubasta(16, BuscarUsuario(6), 800.45, new DateTime(2024, 11, 08));
+            AgregarOfertaAPublicacionSubasta(16, BuscarUsuario(7), 700.45, new DateTime(2024, 11, 13));
+        }
+
+        /// <summary>
+        /// Agregar Oferta a PublicacionSubasta
+        /// </summary>
+        /// <param name="idPublicacion"></param>
+        /// <param name="usuario"></param>
+        /// <param name="monto"></param>
+        /// <param name="fecha"></param>
+
+        private void AgregarOfertaAPublicacionSubasta(int idPublicacion, Usuario usuario, double monto, DateTime fecha)
+        {
+            Publicacion publicacion = BuscarPublicacion(idPublicacion);
+            if (publicacion != null && publicacion is PublicacionSubasta)
+            {
+                PublicacionSubasta publicacionSubasta = (PublicacionSubasta)publicacion;
+                publicacionSubasta.AltaOferta(usuario, monto, fecha);
+            }
         }
 
         /// <summary>
@@ -266,6 +315,7 @@
             catch { }
         }
 
+
         /// <summary>
         /// Busca y devuelve un Articulo de _articulos por su Id
         /// </summary>
@@ -275,19 +325,21 @@
         public Articulo BuscarArticulo(int idArticulo)
         {
             Articulo articuloBuscado = null;
-            foreach (Articulo articulo in _articulos)
+            int cont = 0;
+            while (articuloBuscado == null && cont < _articulos.Count)
             {
-
-                if (articulo.Id == idArticulo)
+                if (_articulos[cont].Id == idArticulo)
                 {
-                    articuloBuscado = articulo;
+                    articuloBuscado = _articulos[cont];
                 }
+                cont++;
             }
             return articuloBuscado;
         }
 
+
         /// <summary>
-        /// Busca y devuelve una Publicacion en _pulicaciones segun un Id
+        /// Busca y devuelve una Publicacion en _publicaciones segun un Id
         /// </summary>
         /// <param name="idPublicacion"></param>
         /// <returns></returns>
@@ -295,15 +347,94 @@
         public Publicacion BuscarPublicacion(int idPublicacion)
         {
             Publicacion publicacionBuscada = null;
-            foreach (Publicacion publicacion in _publicaciones)
+            int cont = 0;
+            while (publicacionBuscada == null && cont < _publicaciones.Count)
             {
-
-                if (publicacion.Id == idPublicacion)
+                if (_publicaciones[cont].Id == idPublicacion)
                 {
-                    publicacionBuscada = publicacion;
+                    publicacionBuscada = _publicaciones[cont];
                 }
+                cont++;
             }
             return publicacionBuscada;
+        }
+
+        /// <summary>
+        /// Buscar Usuario
+        /// </summary>
+        /// <param name="idUsuario"></param>
+        /// <returns></returns>
+        public Usuario BuscarUsuario(int idUsuario)
+        {
+            Usuario usuarioBuscado = null;
+            int cont = 0;
+            while (usuarioBuscado == null && cont < _usuarios.Count)
+            {
+                if (_usuarios[cont].Id == idUsuario)
+                {
+                    usuarioBuscado = _usuarios[cont];
+                }
+                cont++;
+            }
+            return usuarioBuscado;
+        }
+
+        /// <summary>
+        ///Metodo que devuelve Articulos de la Categoria dada 
+        /// </summary>
+        /// <param name="categoria"></param>
+        /// <returns></returns>
+
+        public List<Articulo> DevolverArticulosDeCategoriaDada(string categoria)
+        {
+
+            List<Articulo> listaArticulosFinal = new List<Articulo>();
+            foreach (Articulo articulo in _articulos)
+            {
+                if (articulo.Categoria == categoria)
+                {
+                    listaArticulosFinal.Add(articulo);
+                }
+            }
+            return listaArticulosFinal;
+        }
+
+        /// <summary>
+        /// Metodo que devuelve a todos los clientes
+        /// </summary>
+        /// <returns></returns>
+
+        public List<UsuarioCliente> DevolverTodosLosClientes()
+        {
+            List<UsuarioCliente> listaClientes = new List<UsuarioCliente>();
+            foreach (Usuario usuario in _usuarios)
+            {
+                if (usuario != null && usuario is UsuarioCliente)
+                {
+                    UsuarioCliente usuarioCliente = (UsuarioCliente) usuario;
+                    listaClientes.Add(usuarioCliente);
+                }
+            }
+            return listaClientes;
+        }
+
+        /// <summary>
+        /// Dado un nombre de categoría listar todos los artículos de esa categoría
+        /// </summary>
+        /// <param name="categoriaDada"></param>
+        /// <returns></returns>
+        public List<Articulo> DevolverListaArticulosConCategoria(string categoriaDada)
+        {
+            List<Articulo> listaArticulosConCategoria = new List<Articulo>();
+
+            foreach (Articulo articulo in _articulos)
+            {
+                if (articulo.Categoria.Trim().ToUpper() == categoriaDada.Trim().ToUpper())
+                {
+                    listaArticulosConCategoria.Add(articulo);
+                }
+            }
+            return listaArticulosConCategoria;
         }
     }
 }

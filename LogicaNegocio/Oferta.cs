@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LogicaNegocio
 {
-    public class Oferta : IValidate
+    public class Oferta : IValidate, IEquatable<Oferta>
     {
         private int _id;
         private static int s_ultId;
@@ -39,6 +39,11 @@ namespace LogicaNegocio
             {
                 throw new Exception("El usuario es obligatorio");
             }
+        }
+
+        public bool Equals(Oferta? other)
+        {
+            return _id == other._id;
         }
     }
 
