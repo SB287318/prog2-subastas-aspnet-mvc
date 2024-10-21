@@ -30,16 +30,10 @@
 
         public void AltaUsuario(Usuario usuario)
         {
-            try
+            usuario.Validar();
+            if (!_usuarios.Contains(usuario))
             {
-                if (!_usuarios.Contains(usuario))
-                {
-                    usuario.Validar();
-                    _usuarios.Add(usuario);
-                }
-            }
-            catch
-            {
+                _usuarios.Add(usuario);
             }
         }
 
@@ -59,212 +53,183 @@
 
         public void AltaUsuarioCliente(UsuarioCliente usuarioCliente)
         {
-            try
+            usuarioCliente.Validar();
+            if (!_usuarios.Contains(usuarioCliente))
             {
-                if (!_usuarios.Contains(usuarioCliente))
-                {
-                    usuarioCliente.Validar();
-                    _usuarios.Add(usuarioCliente);
-                }
-            }
-            catch
-            {
+                _usuarios.Add(usuarioCliente);
             }
         }
 
         private void PrecargarArticulos()
         {
-            AltaArticulo(new Articulo("Laptop", "Electrónica", 1500.99));
-            AltaArticulo(new Articulo("Smartphone", "Electrónica", 899.99));
-            AltaArticulo(new Articulo("Cámara Digital", "Fotografía", 450.50));
-            AltaArticulo(new Articulo("Televisor 4K", "Electrónica", 1200.75));
-            AltaArticulo(new Articulo("Auriculares", "Accesorios", 75.30));
-            AltaArticulo(new Articulo("Reloj Inteligente", "Accesorios", 199.99));
-            AltaArticulo(new Articulo("Teclado Mecánico", "Periféricos", 150.00));
-            AltaArticulo(new Articulo("Mouse Gamer", "Periféricos", 50.25));
-            AltaArticulo(new Articulo("Impresora Láser", "Oficina", 300.00));
-            AltaArticulo(new Articulo("Tablet", "Electrónica", 350.75));
-            AltaArticulo(new Articulo("Bicicleta", "Deportes", 800.00));
-            AltaArticulo(new Articulo("Patineta Eléctrica", "Deportes", 550.00));
-            AltaArticulo(new Articulo("Silla Gamer", "Muebles", 250.50));
-            AltaArticulo(new Articulo("Escritorio", "Muebles", 150.75));
-            AltaArticulo(new Articulo("Lámpara de Escritorio", "Iluminación", 40.99));
-            AltaArticulo(new Articulo("Colchón", "Muebles", 300.25));
-            AltaArticulo(new Articulo("Sofá", "Muebles", 700.50));
-            AltaArticulo(new Articulo("Zapatillas Deportivas", "Ropa", 120.00));
-            AltaArticulo(new Articulo("Camiseta", "Ropa", 20.99));
-            AltaArticulo(new Articulo("Chaqueta", "Ropa", 75.50));
-            AltaArticulo(new Articulo("Pantalones", "Ropa", 45.25));
-            AltaArticulo(new Articulo("Bolso", "Accesorios", 60.00));
-            AltaArticulo(new Articulo("Gorra", "Accesorios", 15.50));
-            AltaArticulo(new Articulo("Cinturón", "Accesorios", 25.00));
-            AltaArticulo(new Articulo("Lentes de Sol", "Accesorios", 50.75));
-            AltaArticulo(new Articulo("Juego de Ollas", "Cocina", 120.00));
-            AltaArticulo(new Articulo("Cuchillos de Cocina", "Cocina", 70.99));
-            AltaArticulo(new Articulo("Licuadora", "Cocina", 80.50));
-            AltaArticulo(new Articulo("Tostadora", "Cocina", 30.75));
-            AltaArticulo(new Articulo("Microondas", "Electrodomésticos", 150.25));
-            AltaArticulo(new Articulo("Aspiradora", "Electrodomésticos", 200.00));
-            AltaArticulo(new Articulo("Ventilador", "Electrodomésticos", 60.50));
-            AltaArticulo(new Articulo("Lavadora", "Electrodomésticos", 500.99));
-            AltaArticulo(new Articulo("Secadora", "Electrodomésticos", 450.50));
-            AltaArticulo(new Articulo("Refrigerador", "Electrodomésticos", 900.75));
-            AltaArticulo(new Articulo("Cafetera", "Cocina", 100.25));
-            AltaArticulo(new Articulo("Tetera", "Cocina", 40.50));
-            AltaArticulo(new Articulo("Planchita de Pelo", "Belleza", 50.99));
-            AltaArticulo(new Articulo("Secador de Pelo", "Belleza", 70.75));
-            AltaArticulo(new Articulo("Espejo de Maquillaje", "Belleza", 30.99));
-            AltaArticulo(new Articulo("Perfume", "Belleza", 120.00));
-            AltaArticulo(new Articulo("Juego de Toallas", "Hogar", 40.25));
-            AltaArticulo(new Articulo("Sábanas", "Hogar", 60.75));
-            AltaArticulo(new Articulo("Cortinas", "Hogar", 45.50));
-            AltaArticulo(new Articulo("Alfombra", "Hogar", 80.99));
-            AltaArticulo(new Articulo("Reloj de Pared", "Decoración", 25.75));
-            AltaArticulo(new Articulo("Cuadro Decorativo", "Decoración", 60.50));
-            AltaArticulo(new Articulo("Florero", "Decoración", 20.99));
-            AltaArticulo(new Articulo("Planta Artificial", "Decoración", 15.75));
+            AgregarArticulo("Laptop", "Electrónica", 1500.99);
+            AgregarArticulo("Smartphone", "Electrónica", 899.99);
+            AgregarArticulo("Cámara Digital", "Fotografía", 450.50);
+            AgregarArticulo("Televisor 4K", "Electrónica", 1200.75);
+            AgregarArticulo("Auriculares", "Accesorios", 75.30);
+            AgregarArticulo("Reloj Inteligente", "Accesorios", 199.99);
+            AgregarArticulo("Teclado Mecánico", "Periféricos", 150.00);
+            AgregarArticulo("Mouse Gamer", "Periféricos", 50.25);
+            AgregarArticulo("Impresora Láser", "Oficina", 300.00);
+            AgregarArticulo("Tablet", "Electrónica", 350.75);
+            AgregarArticulo("Bicicleta", "Deportes", 800.00);
+            AgregarArticulo("Patineta Eléctrica", "Deportes", 550.00);
+            AgregarArticulo("Silla Gamer", "Muebles", 250.50);
+            AgregarArticulo("Escritorio", "Muebles", 150.75);
+            AgregarArticulo("Lámpara de Escritorio", "Iluminación", 40.99);
+            AgregarArticulo("Colchón", "Muebles", 300.25);
+            AgregarArticulo("Sofá", "Muebles", 700.50);
+            AgregarArticulo("Zapatillas Deportivas", "Ropa", 120.00);
+            AgregarArticulo("Camiseta", "Ropa", 20.99);
+            AgregarArticulo("Chaqueta", "Ropa", 75.50);
+            AgregarArticulo("Pantalones", "Ropa", 45.25);
+            AgregarArticulo("Bolso", "Accesorios", 60.00);
+            AgregarArticulo("Gorra", "Accesorios", 15.50);
+            AgregarArticulo("Cinturón", "Accesorios", 25.00);
+            AgregarArticulo("Lentes de Sol", "Accesorios", 50.75);
+            AgregarArticulo("Juego de Ollas", "Cocina", 120.00);
+            AgregarArticulo("Cuchillos de Cocina", "Cocina", 70.99);
+            AgregarArticulo("Licuadora", "Cocina", 80.50);
+            AgregarArticulo("Tostadora", "Cocina", 30.75);
+            AgregarArticulo("Microondas", "Electrodomésticos", 150.25);
+            AgregarArticulo("Aspiradora", "Electrodomésticos", 200.00);
+            AgregarArticulo("Ventilador", "Electrodomésticos", 60.50);
+            AgregarArticulo("Lavadora", "Electrodomésticos", 500.99);
+            AgregarArticulo("Secadora", "Electrodomésticos", 450.50);
+            AgregarArticulo("Refrigerador", "Electrodomésticos", 900.75);
+            AgregarArticulo("Cafetera", "Cocina", 100.25);
+            AgregarArticulo("Tetera", "Cocina", 40.50);
+            AgregarArticulo("Planchita de Pelo", "Belleza", 50.99);
+            AgregarArticulo("Secador de Pelo", "Belleza", 70.75);
+            AgregarArticulo("Espejo de Maquillaje", "Belleza", 30.99);
+            AgregarArticulo("Perfume", "Belleza", 120.00);
+            AgregarArticulo("Juego de Toallas", "Hogar", 40.25);
+            AgregarArticulo("Sábanas", "Hogar", 60.75);
+            AgregarArticulo("Cortinas", "Hogar", 45.50);
+            AgregarArticulo("Alfombra", "Hogar", 80.99);
+            AgregarArticulo("Reloj de Pared", "Decoración", 25.75);
+            AgregarArticulo("Cuadro Decorativo", "Decoración", 60.50);
+            AgregarArticulo("Florero", "Decoración", 20.99);
+            AgregarArticulo("Planta Artificial", "Decoración", 15.75);
         }
 
-        public void AltaArticulo(Articulo articulo)
+        public void AgregarArticulo(string nombre, string categoria, double precioVenta)
         {
-            try
+            Articulo nuevoArticulo = new Articulo(nombre, categoria, precioVenta);
+            nuevoArticulo.Validar();
+            if (!_articulos.Contains(nuevoArticulo))
             {
-                if (!_articulos.Contains(articulo))
-                {
-                    articulo.Validar();
-                    _articulos.Add(articulo);
-                }
+                _articulos.Add(nuevoArticulo);
             }
-            catch
-            {
-            }
-
         }
 
         private void PrecargarPublicacionesVenta()
         {
-            try
-            {
-
-                AltaPublicacionVenta(new PublicacionVenta("Electroparaiso", "ABIERTA", new DateTime(2024, 10, 01), BuscarArticulo(1), false));
-                AgregarArticuloAPublicacion(1, 2);
-
-                AltaPublicacionVenta(new PublicacionVenta("Fotogenico", "ABIERTA", new DateTime(2024, 10, 02), BuscarArticulo(3), true));
-                AgregarArticuloAPublicacion(2, 4);
-
-                AltaPublicacionVenta(new PublicacionVenta("Accesorio Inteligente", "ABIERTA", new DateTime(2024, 10, 03), BuscarArticulo(5), false));
-                AgregarArticuloAPublicacion(3, 6);
 
 
-                AltaPublicacionVenta(new PublicacionVenta("Periferico compu", "ABIERTA", new DateTime(2024, 10, 04), BuscarArticulo(7), true));
-                AgregarArticuloAPublicacion(4, 8);
+            AltaPublicacionVenta(new PublicacionVenta("Electroparaiso", "ABIERTA", new DateTime(2024, 10, 01), BuscarArticulo(1), false));
+            AgregarArticuloAPublicacion(1, 2);
+
+            AltaPublicacionVenta(new PublicacionVenta("Fotogenico", "ABIERTA", new DateTime(2024, 10, 02), BuscarArticulo(3), true));
+            AgregarArticuloAPublicacion(2, 4);
+
+            AltaPublicacionVenta(new PublicacionVenta("Accesorio Inteligente", "ABIERTA", new DateTime(2024, 10, 03), BuscarArticulo(5), false));
+            AgregarArticuloAPublicacion(3, 6);
 
 
-                AltaPublicacionVenta(new PublicacionVenta("Homeoffice", "ABIERTA", new DateTime(2024, 10, 05), BuscarArticulo(9), false));
-                AgregarArticuloAPublicacion(5, 10);
+            AltaPublicacionVenta(new PublicacionVenta("Periferico compu", "ABIERTA", new DateTime(2024, 10, 04), BuscarArticulo(7), true));
+            AgregarArticuloAPublicacion(4, 8);
 
 
-                AltaPublicacionVenta(new PublicacionVenta("Transporte", "ABIERTA", new DateTime(2024, 10, 06), BuscarArticulo(11), true));
-                AgregarArticuloAPublicacion(6, 12);
-
-                AltaPublicacionVenta(new PublicacionVenta("Muebles", "ABIERTA", new DateTime(2024, 10, 07), BuscarArticulo(13), false));
-                AgregarArticuloAPublicacion(7, 14);
-                AgregarArticuloAPublicacion(7, 16);
-                AgregarArticuloAPublicacion(7, 17);
+            AltaPublicacionVenta(new PublicacionVenta("Homeoffice", "ABIERTA", new DateTime(2024, 10, 05), BuscarArticulo(9), false));
+            AgregarArticuloAPublicacion(5, 10);
 
 
-                AltaPublicacionVenta(new PublicacionVenta("Ropa", "ABIERTA", new DateTime(2024, 10, 08), BuscarArticulo(18), true));
-                AgregarArticuloAPublicacion(8, 19);
-                AgregarArticuloAPublicacion(8, 20);
-                AgregarArticuloAPublicacion(8, 21);
+            AltaPublicacionVenta(new PublicacionVenta("Transporte", "ABIERTA", new DateTime(2024, 10, 06), BuscarArticulo(11), true));
+            AgregarArticuloAPublicacion(6, 12);
+
+            AltaPublicacionVenta(new PublicacionVenta("Muebles", "ABIERTA", new DateTime(2024, 10, 07), BuscarArticulo(13), false));
+            AgregarArticuloAPublicacion(7, 14);
+            AgregarArticuloAPublicacion(7, 16);
+            AgregarArticuloAPublicacion(7, 17);
 
 
-                AltaPublicacionVenta(new PublicacionVenta("A la moda", "ABIERTA", new DateTime(2024, 10, 09), BuscarArticulo(22), false));
-                AgregarArticuloAPublicacion(9, 23);
-                AgregarArticuloAPublicacion(9, 24);
-                AgregarArticuloAPublicacion(9, 25);
+            AltaPublicacionVenta(new PublicacionVenta("Ropa", "ABIERTA", new DateTime(2024, 10, 08), BuscarArticulo(18), true));
+            AgregarArticuloAPublicacion(8, 19);
+            AgregarArticuloAPublicacion(8, 20);
+            AgregarArticuloAPublicacion(8, 21);
 
 
-                AltaPublicacionVenta(new PublicacionVenta("Cocina", "ABIERTA", new DateTime(2024, 10, 10), BuscarArticulo(26), true));
-                AgregarArticuloAPublicacion(10, 27);
-            }
-            catch { }
+            AltaPublicacionVenta(new PublicacionVenta("A la moda", "ABIERTA", new DateTime(2024, 10, 09), BuscarArticulo(22), false));
+            AgregarArticuloAPublicacion(9, 23);
+            AgregarArticuloAPublicacion(9, 24);
+            AgregarArticuloAPublicacion(9, 25);
+
+
+            AltaPublicacionVenta(new PublicacionVenta("Cocina", "ABIERTA", new DateTime(2024, 10, 10), BuscarArticulo(26), true));
+            AgregarArticuloAPublicacion(10, 27);
+
         }
-
 
         public void AltaPublicacionVenta(PublicacionVenta publicacionVenta)
         {
-            try
+            publicacionVenta.Validar();
+            if (!_publicaciones.Contains(publicacionVenta))
             {
-                if (!_publicaciones.Contains(publicacionVenta))
-                {
-                    publicacionVenta.Validar();
-                    _publicaciones.Add(publicacionVenta);
-                }
-            }
-            catch
-            {
+                _publicaciones.Add(publicacionVenta);
             }
         }
 
         private void PrecargarPublicacionesSubasta()
         {
-            try
-            {
-                AltaPublicacionSubasta(new PublicacionSubasta("Buena mañana", "ABIERTA", new DateTime(2024, 10, 01), BuscarArticulo(28)));
-                AgregarArticuloAPublicacion(11, 29);
+
+            AltaPublicacionSubasta(new PublicacionSubasta("Buena mañana", "ABIERTA", new DateTime(2024, 10, 01), BuscarArticulo(28)));
+            AgregarArticuloAPublicacion(11, 29);
 
 
-                AltaPublicacionSubasta(new PublicacionSubasta("Electrodomesticos", "ABIERTA", new DateTime(2024, 10, 02), BuscarArticulo(30)));
-                AgregarArticuloAPublicacion(12, 32);
+            AltaPublicacionSubasta(new PublicacionSubasta("Electrodomesticos", "ABIERTA", new DateTime(2024, 10, 02), BuscarArticulo(30)));
+            AgregarArticuloAPublicacion(12, 32);
 
 
-                AltaPublicacionSubasta(new PublicacionSubasta("Limpieza", "ABIERTA", new DateTime(2024, 10, 03), BuscarArticulo(31)));
-                AgregarArticuloAPublicacion(13, 33);
-                AgregarArticuloAPublicacion(13, 34);
+            AltaPublicacionSubasta(new PublicacionSubasta("Limpieza", "ABIERTA", new DateTime(2024, 10, 03), BuscarArticulo(31)));
+            AgregarArticuloAPublicacion(13, 33);
+            AgregarArticuloAPublicacion(13, 34);
 
 
-                AltaPublicacionSubasta(new PublicacionSubasta("Mejora de cocina", "ABIERTA", new DateTime(2024, 10, 04), BuscarArticulo(35)));
-                AgregarArticuloAPublicacion(14, 35);
-                AgregarArticuloAPublicacion(14, 36);
-                AgregarArticuloAPublicacion(14, 37);
+            AltaPublicacionSubasta(new PublicacionSubasta("Mejora de cocina", "ABIERTA", new DateTime(2024, 10, 04), BuscarArticulo(35)));
+            AgregarArticuloAPublicacion(14, 35);
+            AgregarArticuloAPublicacion(14, 36);
+            AgregarArticuloAPublicacion(14, 37);
 
-                AltaPublicacionSubasta(new PublicacionSubasta("Para el pelo", "ABIERTA", new DateTime(2024, 10, 05), BuscarArticulo(39)));
-                AgregarArticuloAPublicacion(15, 39);
+            AltaPublicacionSubasta(new PublicacionSubasta("Para el pelo", "ABIERTA", new DateTime(2024, 10, 05), BuscarArticulo(38)));
+            AgregarArticuloAPublicacion(15, 39);
 
 
 
-                AltaPublicacionSubasta(new PublicacionSubasta("Belleza", "ABIERTA", new DateTime(2024, 10, 06), BuscarArticulo(40)));
-                AgregarArticuloAPublicacion(16, 41);
+            AltaPublicacionSubasta(new PublicacionSubasta("Belleza", "ABIERTA", new DateTime(2024, 10, 06), BuscarArticulo(40)));
+            AgregarArticuloAPublicacion(16, 41);
 
-                AltaPublicacionSubasta(new PublicacionSubasta("Hogar", "ABIERTA", new DateTime(2024, 10, 07), BuscarArticulo(42)));
-                AgregarArticuloAPublicacion(17, 43);
+            AltaPublicacionSubasta(new PublicacionSubasta("Hogar", "ABIERTA", new DateTime(2024, 10, 07), BuscarArticulo(42)));
+            AgregarArticuloAPublicacion(17, 43);
 
-                AltaPublicacionSubasta(new PublicacionSubasta("Decoracion", "ABIERTA", new DateTime(2024, 10, 08), BuscarArticulo(44)));
-                AgregarArticuloAPublicacion(18, 45);
+            AltaPublicacionSubasta(new PublicacionSubasta("Decoracion", "ABIERTA", new DateTime(2024, 10, 08), BuscarArticulo(44)));
+            AgregarArticuloAPublicacion(18, 45);
 
-                AltaPublicacionSubasta(new PublicacionSubasta("Decoracion 2", "ABIERTA", new DateTime(2024, 10, 09), BuscarArticulo(46)));
-                AgregarArticuloAPublicacion(19, 47);
+            AltaPublicacionSubasta(new PublicacionSubasta("Decoracion 2", "ABIERTA", new DateTime(2024, 10, 09), BuscarArticulo(46)));
+            AgregarArticuloAPublicacion(19, 47);
 
-                AltaPublicacionSubasta(new PublicacionSubasta("Decoracion 3", "ABIERTA", new DateTime(2024, 10, 10), BuscarArticulo(48)));
-                AgregarArticuloAPublicacion(20, 49);
+            AltaPublicacionSubasta(new PublicacionSubasta("Decoracion 3", "ABIERTA", new DateTime(2024, 10, 10), BuscarArticulo(48)));
+            AgregarArticuloAPublicacion(20, 49);
 
-            }
-            catch { }
+
         }
 
         public void AltaPublicacionSubasta(PublicacionSubasta publicacionSubasta)
         {
-            try
+            publicacionSubasta.Validar();
+            if (!_publicaciones.Contains(publicacionSubasta))
             {
-                if (!_publicaciones.Contains(publicacionSubasta))
-                {
-                    publicacionSubasta.Validar();
-                    _publicaciones.Add(publicacionSubasta);
-                }
-            }
-            catch
-            {
+                _publicaciones.Add(publicacionSubasta);
             }
         }
 
@@ -305,14 +270,10 @@
         {
             Publicacion publicacion = BuscarPublicacion(idPublicacion);
             Articulo articulo = BuscarArticulo(idArticulo);
-            try
+            if (publicacion != null && articulo != null && !publicacion.ContieneArticulo(articulo))
             {
-                if (publicacion != null && articulo != null && !publicacion.ContieneArticulo(articulo))
-                {
-                    publicacion.AgregarArticulo(articulo);
-                }
+                publicacion.AgregarArticulo(articulo);
             }
-            catch { }
         }
 
 
@@ -411,7 +372,7 @@
             {
                 if (usuario != null && usuario is UsuarioCliente)
                 {
-                    UsuarioCliente usuarioCliente = (UsuarioCliente) usuario;
+                    UsuarioCliente usuarioCliente = (UsuarioCliente)usuario;
                     listaClientes.Add(usuarioCliente);
                 }
             }
