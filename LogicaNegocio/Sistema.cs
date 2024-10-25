@@ -397,5 +397,39 @@
             }
             return listaArticulosConCategoria;
         }
+
+        public List<Publicacion> DevolverPublicacionesEntreDosFechas(DateTime fecha1, DateTime fecha2)
+        {
+            List<Publicacion> listaPublicaciones = new List<Publicacion>();
+            DateTime primeraFecha;
+            DateTime segundaFecha;
+            if (fecha1 > fecha2)
+            {
+                primeraFecha = fecha2;
+                segundaFecha = fecha1;
+            }
+            else
+            {
+                if (fecha1 < fecha2)
+                {
+                    primeraFecha = fecha1;
+                    segundaFecha = fecha2;
+                }
+                else
+                {
+                    primeraFecha = fecha1;
+                    segundaFecha = fecha1;
+                }
+            }
+
+            foreach (Publicacion publicacion in _publicaciones)
+            {
+                if (publicacion.FechaPublicacion >= primeraFecha && publicacion.FechaPublicacion <= segundaFecha)
+                {
+                    listaPublicaciones.Add(publicacion);
+                }
+            }
+            return listaPublicaciones;
+        }
     }
 }

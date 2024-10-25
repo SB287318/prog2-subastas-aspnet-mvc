@@ -45,6 +45,16 @@ namespace LogicaNegocio
             get { return _id; }
         }
 
+        public DateTime FechaPublicacion
+        {
+            get { return _fechaPublicacion; }
+        }
+
+        public override string ToString()
+        {
+            return "Id: "+ _id + "\nNombre: " + _nombre + "\nEstado: " + _estado + "\nFecha de Publicación: " + _fechaPublicacion + "\n";
+        }
+
         /// <summary>
         /// Agregar articulos
         /// </summary>
@@ -93,10 +103,6 @@ namespace LogicaNegocio
             if (_articulos == null)
             {
                 throw new Exception("El articulo es obligatorio");
-            }
-            if (_articulos.Count < 2)
-            {
-                throw new Exception("Debe tener mas de un articulo");
             }
         }
     }

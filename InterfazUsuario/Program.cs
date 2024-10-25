@@ -31,6 +31,11 @@ namespace InterfazUsuario
             catch { }
         }
 
+        /// <summary>
+        /// Evalua el input del usuario
+        /// </summary>
+        /// <param name="input"></param>
+
         static void EvaluarInput(int input)
         {
             try
@@ -45,6 +50,9 @@ namespace InterfazUsuario
                         break;
                     case 3:
                         AltaArticulo();
+                        break;
+                    case 4:
+                        MostrarPublicacionesEntreDosFechas();
                         break;
 
                 }
@@ -116,6 +124,31 @@ namespace InterfazUsuario
                 {
                     miSistema.AgregarArticulo(nombre, categoria, precioVenta);
                     Console.WriteLine("El articulo fue creado exitosamente");
+                }
+            }
+            catch { }
+        }
+
+        public static void MostrarPublicacionesEntreDosFechas()
+        {
+            try
+            {
+
+                Console.WriteLine("Ingrese primera fecha: dd/mm/yy");
+                DateTime.TryParse(Console.ReadLine(), out DateTime fecha1);
+                Console.WriteLine("Ingrese segunda fecha: dd/mm/yy");
+                DateTime.TryParse(Console.ReadLine(), out DateTime fecha2);
+                List<Publicacion> publicacionesDevueltas = miSistema.DevolverPublicacionesEntreDosFechas(fecha1, fecha2);
+                if (publicacionesDevueltas.Count == 0)
+                {
+                    Console.WriteLine("No hay publicaciones entre esas fechas");
+                }
+                else
+                {
+                    foreach (Publicacion publicacion in publicacionesDevueltas)
+                    {
+                        Console.WriteLine(publicacion);
+                    }
                 }
             }
             catch { }
