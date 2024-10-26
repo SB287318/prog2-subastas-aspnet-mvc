@@ -134,9 +134,9 @@ namespace InterfazUsuario
             try
             {
 
-                Console.WriteLine("Ingrese primera fecha: dd/mm/yy");
+                Console.WriteLine("Ingrese primera fecha: yy/mm/dd");
                 DateTime.TryParse(Console.ReadLine(), out DateTime fecha1);
-                Console.WriteLine("Ingrese segunda fecha: dd/mm/yy");
+                Console.WriteLine("Ingrese segunda fecha: yy/mm/dd");
                 DateTime.TryParse(Console.ReadLine(), out DateTime fecha2);
                 List<Publicacion> publicacionesDevueltas = miSistema.DevolverPublicacionesEntreDosFechas(fecha1, fecha2);
                 if (publicacionesDevueltas.Count == 0)
