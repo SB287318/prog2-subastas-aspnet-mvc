@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LogicaNegocio
 {
-    public abstract class Publicacion : IValidate
+    public abstract class Publicacion : IValidate, IEquatable<Publicacion> 
     {
         private int _id;
         private static int s_ultId;
@@ -104,6 +104,11 @@ namespace LogicaNegocio
             {
                 throw new Exception("El articulo es obligatorio");
             }
+        }
+
+        public bool Equals(Publicacion? other)
+        {
+            return _nombre == other._nombre;
         }
     }
 }

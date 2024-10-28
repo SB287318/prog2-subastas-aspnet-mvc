@@ -16,6 +16,7 @@
             PrecargarArticulos();
             PrecargarPublicacionesVenta();
             PrecargarPublicacionesSubasta();
+            PrecargarOfertasAPublicacionesSubasta();
         }
 
         /// <summary>

@@ -66,7 +66,7 @@ namespace LogicaNegocio
 
         public bool Equals(Articulo? other)
         {
-            return _id == other._id;
+            return _nombre == other._nombre;
         }
     }
 }

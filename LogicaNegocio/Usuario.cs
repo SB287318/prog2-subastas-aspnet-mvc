@@ -80,7 +80,7 @@ namespace LogicaNegocio
 
         public bool Equals(Usuario? other)
         {
-            return _id == other._id;
+            return _email == other._email;
         }
     }
 }

@@ -22,17 +22,12 @@
 
         public void AltaOferta(Usuario usuario, double monto, DateTime fecha)
         {
-            try
+            Oferta oferta = new Oferta(usuario, monto, fecha);
+            oferta.Validar();
+            if (!_ofertas.Contains(oferta))
             {
-
-                Oferta oferta = new Oferta(usuario, monto, fecha);
-                oferta.Validar();
-                if (!_ofertas.Contains(oferta))
-                {
-                    _ofertas.Add(oferta);
-                }
+                _ofertas.Add(oferta);
             }
-            catch { }
         }
     }
 }
