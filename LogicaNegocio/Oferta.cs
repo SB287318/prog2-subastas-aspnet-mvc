@@ -43,7 +43,7 @@ namespace LogicaNegocio
 
         public bool Equals(Oferta? other)
         {
-            return _id == other._id;
+            return _usuario == other._usuario && _fecha == other._fecha;
         }
     }
 
