@@ -1,11 +1,32 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using LogicaNegocio;
+using Microsoft.AspNetCore.Mvc;
 
 namespace MVC.Controllers
 {
     public class UsuarioClienteController : Controller
     {
+        private Sistema sistema = new Sistema();
+
+        [HttpGet]
         public IActionResult Create()
         {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Create(string nombre, string apellido, string email, string contraseña, double saldoDisponible)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(nombre) && !string.IsNullOrEmpty(apellido) && !string.IsNullOrEmpty(email) && !string.IsNullOrEmpty(contraseña) && saldoDisponible >= 0)
+                {
+                    sistema.AltaUsuarioCliente(nombre, apellido, email, contraseña, saldoDisponible);
+                }
+            }
+            catch (Exception ex) 
+            {
+                ViewBag.Mensaje = ex.Message;
+            }
             return View();
         }
     }

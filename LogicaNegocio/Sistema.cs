@@ -41,24 +41,25 @@
 
         private void PrecargarUsuariosCliente()
         {
-            AltaUsuarioCliente(new UsuarioCliente("Juan", "Pérez", "juan.perez@example.com", "password123", 1000.50));
-            AltaUsuarioCliente(new UsuarioCliente("María", "González", "maria.gonzalez@example.com", "password123", 1500.75));
-            AltaUsuarioCliente(new UsuarioCliente("Carlos", "Rodríguez", "carlos.rodriguez@example.com", "password123", 2000.00));
-            AltaUsuarioCliente(new UsuarioCliente("Lucía", "Fernández", "lucia.fernandez@example.com", "password123", 500.20));
-            AltaUsuarioCliente(new UsuarioCliente("Pedro", "Martínez", "pedro.martinez@example.com", "password123", 750.10));
-            AltaUsuarioCliente(new UsuarioCliente("Ana", "López", "ana.lopez@example.com", "password123", 1200.85));
-            AltaUsuarioCliente(new UsuarioCliente("José", "García", "jose.garcia@example.com", "password123", 3000.00));
-            AltaUsuarioCliente(new UsuarioCliente("Laura", "Sánchez", "laura.sanchez@example.com", "password123", 1800.30));
-            AltaUsuarioCliente(new UsuarioCliente("Miguel", "Hernández", "miguel.hernandez@example.com", "password123", 2500.75));
-            AltaUsuarioCliente(new UsuarioCliente("Carmen", "Díaz", "carmen.diaz@example.com", "password123", 950.45));
+            AltaUsuarioCliente("Juan", "Pérez", "juan.perez@example.com", "password123", 1000.50);
+            AltaUsuarioCliente("María", "González", "maria.gonzalez@example.com", "password123", 1500.75);
+            AltaUsuarioCliente("Carlos", "Rodríguez", "carlos.rodriguez@example.com", "password123", 2000.00);
+            AltaUsuarioCliente("Lucía", "Fernández", "lucia.fernandez@example.com", "password123", 500.20);
+            AltaUsuarioCliente("Pedro", "Martínez", "pedro.martinez@example.com", "password123", 750.10);
+            AltaUsuarioCliente("Ana", "López", "ana.lopez@example.com", "password123", 1200.85);
+            AltaUsuarioCliente("José", "García", "jose.garcia@example.com", "password123", 3000.00);
+            AltaUsuarioCliente("Laura", "Sánchez", "laura.sanchez@example.com", "password123", 1800.30);
+            AltaUsuarioCliente("Miguel", "Hernández", "miguel.hernandez@example.com", "password123", 2500.75);
+            AltaUsuarioCliente("Carmen", "Díaz", "carmen.diaz@example.com", "password123", 950.45);
         }
 
-        public void AltaUsuarioCliente(UsuarioCliente usuarioCliente)
+        public void AltaUsuarioCliente(string nombre, string apellido, string email, string contraseña, double saldoDisponible)
         {
-            usuarioCliente.Validar();
-            if (!_usuarios.Contains(usuarioCliente))
+            UsuarioCliente nuevoUsuarioCliente = new UsuarioCliente(nombre, apellido, email, contraseña, saldoDisponible);
+            nuevoUsuarioCliente.Validar();
+            if (!_usuarios.Contains(nuevoUsuarioCliente))
             {
-                _usuarios.Add(usuarioCliente);
+                _usuarios.Add(nuevoUsuarioCliente);
             }
         }
 
