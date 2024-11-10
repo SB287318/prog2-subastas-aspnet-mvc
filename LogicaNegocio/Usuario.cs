@@ -80,7 +80,7 @@ namespace LogicaNegocio
 
         public bool Equals(Usuario? other)
         {
-            return _email == other._email;
+            return _email.Trim().ToUpper() == other._email.Trim().ToUpper();
         }
     }
 }

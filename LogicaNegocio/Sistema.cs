@@ -5,6 +5,7 @@
         private List<Usuario> _usuarios = new List<Usuario>();
         private List<Articulo> _articulos = new List<Articulo>();
         private List<Publicacion> _publicaciones = new List<Publicacion>();
+        private static Sistema _instancia;
 
         /// <summary>
         /// Constructor
