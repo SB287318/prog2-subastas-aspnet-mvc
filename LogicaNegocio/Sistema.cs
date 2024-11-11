@@ -5,12 +5,26 @@
         private List<Usuario> _usuarios = new List<Usuario>();
         private List<Articulo> _articulos = new List<Articulo>();
         private List<Publicacion> _publicaciones = new List<Publicacion>();
-        private static Sistema _instancia;
+        // Patron singleton-1
+        private static Sistema s_instancia;
+
+        // Patron singleton-2
+        public static Sistema Instancia
+        {
+            get
+            {
+                if (s_instancia == null)
+                {
+                    s_instancia = new Sistema();
+                }
+                return s_instancia;
+            }
+        }
 
         /// <summary>
         /// Constructor
         /// </summary>
-        public Sistema()
+        private Sistema()
         {
             PrecargarUsuarios();
             PrecargarUsuariosCliente();

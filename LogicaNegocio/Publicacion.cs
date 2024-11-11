@@ -50,6 +50,11 @@ namespace LogicaNegocio
             get { return _fechaPublicacion; }
         }
 
+        public List<Articulo> Articulos
+        {
+            get { return _articulos; }
+        }
+
         public override string ToString()
         {
             return "Id: "+ _id + "\nNombre: " + _nombre + "\nEstado: " + _estado + "\nFecha de Publicación: " + _fechaPublicacion + "\n";
@@ -80,6 +85,9 @@ namespace LogicaNegocio
             }
             return resultado;
         }
+
+        public abstract double CalcularPrecio();
+
 
         /// <summary>
         /// Validacion

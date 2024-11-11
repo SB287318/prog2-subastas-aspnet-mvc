@@ -39,6 +39,11 @@ namespace LogicaNegocio
             get { return _categoria; }
         }
 
+        public double PrecioVenta
+        {
+            get { return _precioVenta; }
+        }
+
         public override string ToString() 
         {
             return "Id: " + _id + "\nNombre: " + _nombre + "\nPrecio de venta: " + _precioVenta;

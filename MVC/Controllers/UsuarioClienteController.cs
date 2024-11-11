@@ -5,7 +5,7 @@ namespace MVC.Controllers
 {
     public class UsuarioClienteController : Controller
     {
-        private Sistema sistema = new Sistema();
+        private Sistema sistema = Sistema.Instancia;
 
         [HttpGet]
         public IActionResult Create()
@@ -18,12 +18,12 @@ namespace MVC.Controllers
         {
             try
             {
-                if (!string.IsNullOrEmpty(nombre) && !string.IsNullOrEmpty(apellido) && !string.IsNullOrEmpty(email) && !string.IsNullOrEmpty(contraseña) && saldoDisponible >= 0)
+                if (!string.IsNullOrEmpty(nombre) && !string.IsNullOrEmpty(apellido) && !string.IsNullOrEmpty(email) && !string.IsNullOrEmpty(contraseña) && contraseña.Count() >= 8 && saldoDisponible >= 0)
                 {
                     sistema.AltaUsuarioCliente(nombre, apellido, email, contraseña, saldoDisponible);
                 }
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 ViewBag.Mensaje = ex.Message;
             }
