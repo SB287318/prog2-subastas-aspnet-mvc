@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace LogicaNegocio
 {
-    public class Oferta : IValidate, IEquatable<Oferta>
+    public class Oferta : IValidate, IEquatable<Oferta>, IComparable<Oferta>
     {
         private int _id;
         private static int s_ultId;
-        private Usuario _usuario;
+        private UsuarioCliente _usuarioCliente;
         private double _monto;
         private DateTime _fecha;
 
@@ -22,10 +22,15 @@ namespace LogicaNegocio
         /// <param name="monto"></param>
         /// <param name="fecha"></param>
 
-        public Oferta(Usuario usuario, double monto, DateTime fecha) { 
-            _usuario = usuario;
+        public Oferta(UsuarioCliente usuarioCliente, double monto, DateTime fecha) {
+            _usuarioCliente = usuarioCliente;
             _monto = monto;
             _fecha = fecha;
+        }
+
+        public double Monto 
+        { 
+            get { return _monto; } 
         }
 
         /// <summary>
@@ -35,7 +40,7 @@ namespace LogicaNegocio
 
         public void Validar()
         {
-            if (_usuario == null)
+            if (_usuarioCliente == null)
             {
                 throw new Exception("El usuario es obligatorio");
             }
@@ -43,7 +48,12 @@ namespace LogicaNegocio
 
         public bool Equals(Oferta? other)
         {
-            return _usuario == other._usuario && _fecha == other._fecha;
+            return _usuarioCliente == other._usuarioCliente && _fecha == other._fecha;
+        }
+
+        public int CompareTo(Oferta? other)
+        {
+            return _monto.CompareTo(other._monto);
         }
     }
 

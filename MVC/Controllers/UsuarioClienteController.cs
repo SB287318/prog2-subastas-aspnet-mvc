@@ -21,6 +21,7 @@ namespace MVC.Controllers
                 if (!string.IsNullOrEmpty(nombre) && !string.IsNullOrEmpty(apellido) && !string.IsNullOrEmpty(email) && !string.IsNullOrEmpty(contraseña) && contraseña.Count() >= 8 && saldoDisponible >= 0)
                 {
                     sistema.AltaUsuarioCliente(nombre, apellido, email, contraseña, saldoDisponible);
+                    ViewBag.Mensaje = "El usuario fue creado correctamente";
                 }
             }
             catch (Exception ex)

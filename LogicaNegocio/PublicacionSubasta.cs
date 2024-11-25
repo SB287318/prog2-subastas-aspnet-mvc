@@ -20,14 +20,20 @@
         /// </summary>
         /// <param name="oferta"></param>
 
-        public void AltaOferta(Usuario usuario, double monto, DateTime fecha)
+        public void AltaOferta(UsuarioCliente usuarioCliente, double monto, DateTime fecha)
         {
-            Oferta oferta = new Oferta(usuario, monto, fecha);
+            Oferta oferta = new Oferta(usuarioCliente, monto, fecha);
             oferta.Validar();
             if (!_ofertas.Contains(oferta))
             {
                 _ofertas.Add(oferta);
             }
+        }
+
+        public override double CalcularPrecio()
+        {
+            _ofertas.Sort();
+            return _ofertas[0].Monto;
         }
     }
 }

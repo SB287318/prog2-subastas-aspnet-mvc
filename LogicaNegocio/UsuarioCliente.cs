@@ -48,6 +48,5 @@ namespace LogicaNegocio
                 throw new Exception("El saldo debe tener un minimo de 0");
             }
         }
-
     }
 }

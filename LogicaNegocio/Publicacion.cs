@@ -18,6 +18,7 @@ namespace LogicaNegocio
         private UsuarioCliente _usuarioClienteComprador;
         private Usuario _usuarioFinalizador;
         private DateTime _fechaFinalizada;
+        public abstract double CalcularPrecio();
 
         /// <summary>
         /// Constructor
@@ -85,8 +86,6 @@ namespace LogicaNegocio
             }
             return resultado;
         }
-
-        public abstract double CalcularPrecio();
 
 
         /// <summary>

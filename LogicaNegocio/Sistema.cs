@@ -8,6 +8,11 @@
         // Patron singleton-1
         private static Sistema s_instancia;
 
+
+        /// <summary>
+        /// Accesores 
+        /// </summary>
+
         // Patron singleton-2
         public static Sistema Instancia
         {
@@ -20,6 +25,12 @@
                 return s_instancia;
             }
         }
+
+        public List<Publicacion> Publicaciones
+        {
+            get { return _publicaciones; }
+        }
+
 
         /// <summary>
         /// Constructor
@@ -270,10 +281,11 @@
         private void AgregarOfertaAPublicacionSubasta(int idPublicacion, Usuario usuario, double monto, DateTime fecha)
         {
             Publicacion publicacion = BuscarPublicacion(idPublicacion);
-            if (publicacion != null && publicacion is PublicacionSubasta)
+            if (publicacion != null && publicacion is PublicacionSubasta && usuario != null && usuario is UsuarioCliente)
             {
+                UsuarioCliente usuarioCliente = (UsuarioCliente)usuario;
                 PublicacionSubasta publicacionSubasta = (PublicacionSubasta)publicacion;
-                publicacionSubasta.AltaOferta(usuario, monto, fecha);
+                publicacionSubasta.AltaOferta(usuarioCliente, monto, fecha);
             }
         }
 
@@ -414,6 +426,13 @@
             }
             return listaArticulosConCategoria;
         }
+
+        /// <summary>
+        /// Metodo que devuelve las Publicaciones entre dos fechas
+        /// </summary>
+        /// <param name="fecha1"></param>
+        /// <param name="fecha2"></param>
+        /// <returns></returns>
 
         public List<Publicacion> DevolverPublicacionesEntreDosFechas(DateTime fecha1, DateTime fecha2)
         {
