@@ -23,7 +23,13 @@ namespace LogicaNegocio
         public PublicacionVenta(string nombre, string estado, DateTime fechaPublicacion, Articulo articulo, bool ofertaRelampago) : base(nombre, estado, fechaPublicacion, articulo)
         {
             _ofertaRelampago = ofertaRelampago;
-            _precio = this.CalcularPrecio();
+
+
+        }
+
+        public double Precio
+        {
+            get { return _precio; }
         }
 
         /// <summary>
@@ -31,7 +37,7 @@ namespace LogicaNegocio
         /// </summary>
         /// <returns></returns>
 
-        public override double CalcularPrecio() 
+        public override void CalcularPrecio() 
         {
             double precio = 0;
             foreach (Articulo articulo in Articulos) 
@@ -43,7 +49,7 @@ namespace LogicaNegocio
             {
                 precio -= precio *0.20;
             }
-            return precio;
+            _precio =  precio;
         }
     }
 }

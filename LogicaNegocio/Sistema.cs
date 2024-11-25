@@ -26,6 +26,9 @@
             }
         }
 
+        /// <summary>
+        /// Accesores
+        /// </summary>
         public List<Publicacion> Publicaciones
         {
             get { return _publicaciones; }
@@ -302,6 +305,7 @@
             if (publicacion != null && articulo != null && !publicacion.ContieneArticulo(articulo))
             {
                 publicacion.AgregarArticulo(articulo);
+                publicacion.CalcularPrecio();
             }
         }
 

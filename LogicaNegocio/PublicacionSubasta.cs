@@ -3,6 +3,7 @@
     public class PublicacionSubasta : Publicacion
     {
         private List<Oferta> _ofertas = new List<Oferta>();
+        private double _precio;
 
         /// <summary>
         /// Constructor
@@ -13,6 +14,11 @@
 
         public PublicacionSubasta(string nombre, string estado, DateTime fechaPublicacion, Articulo articulo) : base(nombre, estado, fechaPublicacion, articulo)
         {
+        }
+
+        public double Precio 
+        { 
+            get { return _precio; } 
         }
 
         /// <summary>
@@ -30,10 +36,10 @@
             }
         }
 
-        public override double CalcularPrecio()
+        public override void CalcularPrecio()
         {
             _ofertas.Sort();
-            return _ofertas[0].Monto;
+            _precio = _ofertas[0].Monto;
         }
     }
 }

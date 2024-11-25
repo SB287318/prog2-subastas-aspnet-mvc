@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LogicaNegocio
 {
-    public abstract class Publicacion : IValidate, IEquatable<Publicacion> 
+    public abstract class Publicacion : IValidate, IEquatable<Publicacion>
     {
         private int _id;
         private static int s_ultId;
@@ -18,7 +18,7 @@ namespace LogicaNegocio
         private UsuarioCliente _usuarioClienteComprador;
         private Usuario _usuarioFinalizador;
         private DateTime _fechaFinalizada;
-        public abstract double CalcularPrecio();
+        public abstract void CalcularPrecio();
 
         /// <summary>
         /// Constructor
@@ -40,6 +40,15 @@ namespace LogicaNegocio
         /// <summary>
         /// Accesores
         /// </summary>
+        public string Nombre
+        {
+            get { return _nombre; }
+        }
+
+        public string Estado
+        {
+            get { return _estado; }
+        }
 
         public int Id
         {
