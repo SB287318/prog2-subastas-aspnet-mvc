@@ -4,21 +4,28 @@
 }
 
 <h1>Index</h1>
-<table>
-    <thead>
-        <th>Nombre</th>
-        <th>Estado</th>
-        <th>Precio</th>
-    </thead>
-    <tbody>
-        @foreach (LogicaNegocio.Publicacion publicacion in ViewBag.ListaPublicaciones)
-        {
-            <tr>
-                <td>@publicacion.Nombre</td>
-                <td>@publicacion.Estado</td>
-                <td>@publicacion.</td>
-            </tr>
-        }
-    </tbody>
-</table>
+@if (ViewBag.ListaPublicaciones != null && ViewBag.ListaPublicaciones.Count > 0)
+{ 
+    <table>
+        <thead>
+            <th>Nombre</th>
+            <th>Estado</th>
+            <th>Precio</th>
+        </thead>
+        <tbody>
+            @foreach (LogicaNegocio.Publicacion publicacion in ViewBag.ListaPublicaciones)
+            {
+                <tr>
+                    <td>@publicacion.Nombre</td>
+                    <td>@publicacion.Estado</td>
+                    <td>@publicacion.Precio</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No existen Publicaciones en el sistema</p>
+}
 

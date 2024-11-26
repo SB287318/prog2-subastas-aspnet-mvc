@@ -10,7 +10,7 @@ namespace LogicaNegocio
     public class Oferta : IValidate, IEquatable<Oferta>, IComparable<Oferta>
     {
         private int _id;
-        private static int s_ultId;
+        private static int s_ultId = 1;
         private UsuarioCliente _usuarioCliente;
         private double _monto;
         private DateTime _fecha;
@@ -26,6 +26,8 @@ namespace LogicaNegocio
             _usuarioCliente = usuarioCliente;
             _monto = monto;
             _fecha = fecha;
+            _id = s_ultId;
+            Oferta.s_ultId++;
         }
 
         public double Monto 
@@ -53,7 +55,7 @@ namespace LogicaNegocio
 
         public int CompareTo(Oferta? other)
         {
-            return _monto.CompareTo(other._monto);
+            return _monto.CompareTo(other._monto)*-1;
         }
     }
 

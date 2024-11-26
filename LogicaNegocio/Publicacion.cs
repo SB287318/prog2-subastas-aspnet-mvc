@@ -10,7 +10,7 @@ namespace LogicaNegocio
     public abstract class Publicacion : IValidate, IEquatable<Publicacion>
     {
         private int _id;
-        private static int s_ultId;
+        private static int s_ultId = 1;
         private string _nombre;
         private string _estado;
         private DateTime _fechaPublicacion;
@@ -18,6 +18,7 @@ namespace LogicaNegocio
         private UsuarioCliente _usuarioClienteComprador;
         private Usuario _usuarioFinalizador;
         private DateTime _fechaFinalizada;
+        private double _precio;
         public abstract void CalcularPrecio();
 
         /// <summary>
@@ -64,6 +65,13 @@ namespace LogicaNegocio
         {
             get { return _articulos; }
         }
+
+        public double Precio
+        {
+            get { return _precio; }
+            set { _precio = value; }
+        }
+
 
         public override string ToString()
         {

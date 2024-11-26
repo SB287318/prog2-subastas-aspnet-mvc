@@ -157,7 +157,6 @@
         private void PrecargarPublicacionesVenta()
         {
 
-
             AltaPublicacionVenta(new PublicacionVenta("Electroparaiso", "ABIERTA", new DateTime(2024, 10, 01), BuscarArticulo(1), false));
             AgregarArticuloAPublicacion(1, 2);
 
@@ -167,14 +166,11 @@
             AltaPublicacionVenta(new PublicacionVenta("Accesorio Inteligente", "ABIERTA", new DateTime(2024, 10, 03), BuscarArticulo(5), false));
             AgregarArticuloAPublicacion(3, 6);
 
-
             AltaPublicacionVenta(new PublicacionVenta("Periferico compu", "ABIERTA", new DateTime(2024, 10, 04), BuscarArticulo(7), true));
             AgregarArticuloAPublicacion(4, 8);
 
-
             AltaPublicacionVenta(new PublicacionVenta("Homeoffice", "ABIERTA", new DateTime(2024, 10, 05), BuscarArticulo(9), false));
             AgregarArticuloAPublicacion(5, 10);
-
 
             AltaPublicacionVenta(new PublicacionVenta("Transporte", "ABIERTA", new DateTime(2024, 10, 06), BuscarArticulo(11), true));
             AgregarArticuloAPublicacion(6, 12);
@@ -184,22 +180,18 @@
             AgregarArticuloAPublicacion(7, 16);
             AgregarArticuloAPublicacion(7, 17);
 
-
             AltaPublicacionVenta(new PublicacionVenta("Ropa", "ABIERTA", new DateTime(2024, 10, 08), BuscarArticulo(18), true));
             AgregarArticuloAPublicacion(8, 19);
             AgregarArticuloAPublicacion(8, 20);
             AgregarArticuloAPublicacion(8, 21);
-
 
             AltaPublicacionVenta(new PublicacionVenta("A la moda", "ABIERTA", new DateTime(2024, 10, 09), BuscarArticulo(22), false));
             AgregarArticuloAPublicacion(9, 23);
             AgregarArticuloAPublicacion(9, 24);
             AgregarArticuloAPublicacion(9, 25);
 
-
             AltaPublicacionVenta(new PublicacionVenta("Cocina", "ABIERTA", new DateTime(2024, 10, 10), BuscarArticulo(26), true));
             AgregarArticuloAPublicacion(10, 27);
-
         }
 
         public void AltaPublicacionVenta(PublicacionVenta publicacionVenta)
@@ -289,6 +281,7 @@
                 UsuarioCliente usuarioCliente = (UsuarioCliente)usuario;
                 PublicacionSubasta publicacionSubasta = (PublicacionSubasta)publicacion;
                 publicacionSubasta.AltaOferta(usuarioCliente, monto, fecha);
+                publicacionSubasta.CalcularPrecio();
             }
         }
 
