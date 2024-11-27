@@ -52,6 +52,15 @@ namespace LogicaNegocio
             get { return _apellido; }
         }
 
+        public string Email
+        {
+            get { return _email; }
+        }
+
+        public string Contraseña
+        {
+            get { return _contraseña; }
+        }
 
         /// <summary>
         /// Validacion

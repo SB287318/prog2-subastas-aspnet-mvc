@@ -258,11 +258,11 @@
 
         private void PrecargarOfertasAPublicacionesSubasta()
         {
-            AgregarOfertaAPublicacionSubasta(15, BuscarUsuario(3), 950.45, new DateTime(2024, 10, 10));
-            AgregarOfertaAPublicacionSubasta(15, BuscarUsuario(4), 1200.85, new DateTime(2024, 10, 06));
-            AgregarOfertaAPublicacionSubasta(15, BuscarUsuario(5), 900.45, new DateTime(2024, 10, 08));
-            AgregarOfertaAPublicacionSubasta(16, BuscarUsuario(6), 800.45, new DateTime(2024, 11, 08));
-            AgregarOfertaAPublicacionSubasta(16, BuscarUsuario(7), 700.45, new DateTime(2024, 11, 13));
+            AgregarOfertaAPublicacionSubasta(15, BuscarUsuarioPorId(3), 950.45, new DateTime(2024, 10, 10));
+            AgregarOfertaAPublicacionSubasta(15, BuscarUsuarioPorId(4), 1200.85, new DateTime(2024, 10, 06));
+            AgregarOfertaAPublicacionSubasta(15, BuscarUsuarioPorId(5), 900.45, new DateTime(2024, 10, 08));
+            AgregarOfertaAPublicacionSubasta(16, BuscarUsuarioPorId(6), 800.45, new DateTime(2024, 11, 08));
+            AgregarOfertaAPublicacionSubasta(16, BuscarUsuarioPorId(7), 700.45, new DateTime(2024, 11, 13));
         }
 
         /// <summary>
@@ -347,17 +347,37 @@
         }
 
         /// <summary>
-        /// Buscar Usuario
+        /// Busca y devuelve un Usuario por su Id
         /// </summary>
         /// <param name="idUsuario"></param>
         /// <returns></returns>
-        public Usuario BuscarUsuario(int idUsuario)
+        public Usuario BuscarUsuarioPorId(int idUsuario)
         {
             Usuario usuarioBuscado = null;
             int cont = 0;
             while (usuarioBuscado == null && cont < _usuarios.Count)
             {
                 if (_usuarios[cont].Id == idUsuario)
+                {
+                    usuarioBuscado = _usuarios[cont];
+                }
+                cont++;
+            }
+            return usuarioBuscado;
+        }
+
+        /// <summary>
+        /// Busca y devuelve un Usuario por su Email y Contraseña
+        /// </summary>
+        /// <param name="idUsuario"></param>
+        /// <returns></returns>
+        public Usuario BuscarUsuarioPorEmailYContraseña (string email, string contraseña)
+        {
+            Usuario usuarioBuscado = null;
+            int cont = 0;
+            while (usuarioBuscado == null && cont < _usuarios.Count)
+            {
+                if (_usuarios[cont].Email == email && _usuarios[cont].Contraseña == contraseña)
                 {
                     usuarioBuscado = _usuarios[cont];
                 }
