@@ -1,5 +1,4 @@
 using LogicaNegocio;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MVC.Models;
 using System.Diagnostics;
@@ -32,9 +31,9 @@ namespace MVC.Controllers
         }
 
         [HttpGet]
-        public IActionResult Login() 
-        { 
-            return View(); 
+        public IActionResult Login()
+        {
+            return View();
         }
 
         [HttpPost]
@@ -44,15 +43,37 @@ namespace MVC.Controllers
             {
                 if (!string.IsNullOrEmpty(email) && !string.IsNullOrEmpty(contraseña))
                 {
-                    Usuario usuario = Sistema.Instancia.BuscarUsuario();
+                    Usuario usuario = Sistema.Instancia.BuscarUsuarioPorEmailYContraseña(email, contraseña);
                     if (usuario != null)
                     {
-                        HttpContext.Session.SetInt32("idUsuario")
+                        if (usuario is UsuarioCliente)
+                        {
+                            HttpContext.Session.SetInt32("idUsuarioCliente", usuario.Id);
+                            return RedirectToAction("Index", "Publicacion");
+                        }
+                    }
+                    else
+                    {
+                        ViewBag.Mensaje = "Los datos no son correctos";
                     }
                 }
+                else
+                {
+                    ViewBag.Mensaje = "Los datos no son correctos";
+                }
+            }
+            catch (Exception ex)
+            {
+
             }
 
             return View();
+        }
+
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Clear();
+            return RedirectToAction("Login");
         }
     }
 }

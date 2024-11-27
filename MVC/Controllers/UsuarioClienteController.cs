@@ -23,6 +23,10 @@ namespace MVC.Controllers
                     sistema.AltaUsuarioCliente(nombre, apellido, email, contraseña, saldoDisponible);
                     ViewBag.Mensaje = "El usuario fue creado correctamente";
                 }
+                else
+                {
+                    ViewBag.Mensaje = "El usuario no pudo ser creado";
+                }
             }
             catch (Exception ex)
             {
