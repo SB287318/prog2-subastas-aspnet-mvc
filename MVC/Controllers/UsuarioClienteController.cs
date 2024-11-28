@@ -34,5 +34,62 @@ namespace MVC.Controllers
             }
             return View();
         }
+
+        /// <summary>
+        /// Muestra la pagina para cargar saldo
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        public IActionResult BilleteraElectronica()
+        {
+            try
+            {
+                int idUsuario = (int)HttpContext.Session.GetInt32("idUsuarioCliente");
+                Usuario usuario = Sistema.Instancia.BuscarUsuarioPorId(idUsuario);
+                if (HttpContext.Session.GetInt32("idUsuarioCliente") != null && usuario != null && usuario is UsuarioCliente)
+                {
+                    UsuarioCliente usuarioCliente = (UsuarioCliente)usuario;
+                    ViewBag.SaldoUsuarioCliente = usuarioCliente.Saldo;
+                    return View();
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+            return RedirectToAction("Index", "Home");
+        }
+
+        [HttpPost]
+        public IActionResult BilleteraElectronica(double montoACargar)
+        {
+            try
+            {
+                if (montoACargar > 0)
+                {
+                    int idUsuario = (int)HttpContext.Session.GetInt32("idUsuarioCliente");
+                    Usuario usuario = Sistema.Instancia.BuscarUsuarioPorId(idUsuario);
+                    if (HttpContext.Session.GetInt32("idUsuarioCliente") != null && usuario != null && usuario is UsuarioCliente)
+                    {
+                        UsuarioCliente usuarioCliente = (UsuarioCliente)usuario;
+                        Sistema.Instancia.CargarSaldoAUsuarioCliente(usuarioCliente, montoACargar);
+                        ViewBag.SaldoUsuarioCliente = usuarioCliente.Saldo;
+                        ViewBag.Mensaje = "Se cargo saldo exitosamente";
+                        return View();
+                    }
+                }
+                else
+                {
+                    int idUsuario = (int)HttpContext.Session.GetInt32("idUsuarioCliente");
+                    Usuario usuario = Sistema.Instancia.BuscarUsuarioPorId(idUsuario);
+                    UsuarioCliente usuarioCliente = (UsuarioCliente)usuario;
+                    ViewBag.SaldoUsuarioCliente = usuarioCliente.Saldo;
+                    ViewBag.Mensaje = "Los datos no son correctos";
+                }
+            }
+            catch (Exception ex) { }
+            return View();
+        }
     }
 }

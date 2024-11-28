@@ -1,13 +1,8 @@
 ﻿using LogicaNegocio.Interface;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LogicaNegocio
 {
-    public class UsuarioCliente : Usuario , IValidate
+    public class UsuarioCliente : Usuario, IValidate
     {
         private double _saldoDisponible;
 
@@ -31,7 +26,12 @@ namespace LogicaNegocio
         /// <returns></returns>
         public override string ToString()
         {
-            return "["+Id+"] - "+Nombre+" "+Apellido;
+            return "[" + Id + "] - " + Nombre + " " + Apellido;
+        }
+
+        public double Saldo
+        {
+            get { return _saldoDisponible; }
         }
 
         /// <summary>
@@ -39,7 +39,7 @@ namespace LogicaNegocio
         /// </summary>
         /// <exception cref="Exception"></exception>
 
-        public void Validar() 
+        public void Validar()
         {
             base.Validar();
 
@@ -47,6 +47,11 @@ namespace LogicaNegocio
             {
                 throw new Exception("El saldo debe tener un minimo de 0");
             }
+        }
+
+        public void CargarSaldo(double montoACargar)
+        {
+            _saldoDisponible += montoACargar;
         }
     }
 }

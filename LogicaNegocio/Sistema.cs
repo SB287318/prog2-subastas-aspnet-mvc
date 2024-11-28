@@ -484,5 +484,32 @@
             }
             return listaPublicaciones;
         }
+
+        /// <summary>
+        /// Metodo que carga saldo al UsuarioCliente
+        /// </summary>
+        /// <param name="usuarioCliente"></param>
+        /// <param name="montoACargar"></param>
+        public void CargarSaldoAUsuarioCliente(UsuarioCliente usuarioCliente, double montoACargar)
+        {
+            if (usuarioCliente != null && usuarioCliente is UsuarioCliente && montoACargar > 0)
+            {
+                usuarioCliente.CargarSaldo(montoACargar);
+            }
+        }
+        
+        public List<PublicacionSubasta> DevolverPublicacionesDeTipoSubasta()
+        {
+            List<PublicacionSubasta> listaSubastas = new List<PublicacionSubasta>();
+            foreach (Publicacion publicacion in _publicaciones)
+            {
+                if (publicacion is PublicacionSubasta)
+                {
+                    PublicacionSubasta publicacionSubasta = (PublicacionSubasta)publicacion;
+                    listaSubastas.Add(publicacionSubasta);
+                }
+            }
+            return listaSubastas;
+        }
     }
 }

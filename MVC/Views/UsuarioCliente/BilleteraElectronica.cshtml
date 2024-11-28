@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewData["Title"] = "BilleteraElectronica";
+}
+
+<h1>Billetera Electronica</h1>
+<form method="post">
+    <label>
+        Saldo actual: @ViewBag.SaldoUsuarioCliente
+    </label>
+    <br />
+    <label>Monto a cargar</label>
+    <input type="number" name="montoACargar" />
+    <br />
+    <input type="submit" value="Cargar saldo" />
+</form>
+@ViewBag.Mensaje

@@ -3,21 +3,17 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace MVC.Controllers
 {
-    public class PublicacionController : Controller
+    public class PublicacionSubastaController : Controller
     {
-        /// <summary>
-        /// Permite mostrar a todas las publicaciones
-        /// </summary>
-        /// <returns></returns>
         public IActionResult Index()
         {
             try
             {
                 int idUsuario = (int)HttpContext.Session.GetInt32("idUsuarioCliente");
                 Usuario usuario = Sistema.Instancia.BuscarUsuarioPorId(idUsuario);
-                if (HttpContext.Session.GetInt32("idUsuarioCliente") != null && usuario != null && usuario is UsuarioCliente)
+                if (HttpContext.Session.GetInt32("idUsuarioCliente") != null && usuario != null && usuario is not UsuarioCliente)
                 {
-                    ViewBag.ListaPublicaciones = Sistema.Instancia.Publicaciones;
+                    ViewBag.ListaPublicacionesSubasta = Sistema.Instancia.Publicaciones;
                     return View();
                 }
             }
