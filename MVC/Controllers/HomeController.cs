@@ -51,6 +51,11 @@ namespace MVC.Controllers
                             HttpContext.Session.SetInt32("idUsuarioCliente", usuario.Id);
                             return RedirectToAction("Index", "Publicacion");
                         }
+                        else
+                        {
+                            HttpContext.Session.SetInt32("idUsuarioAdmin", usuario.Id);
+                            return RedirectToAction("MostrarListaSubastas", "Publicacion");
+                        }
                     }
                     else
                     {

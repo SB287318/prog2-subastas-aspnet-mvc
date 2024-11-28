@@ -498,6 +498,10 @@
             }
         }
         
+        /// <summary>
+        /// Devuelve todas las subastas ordenadas por fecha
+        /// </summary>
+        /// <returns></returns>
         public List<PublicacionSubasta> DevolverPublicacionesDeTipoSubasta()
         {
             List<PublicacionSubasta> listaSubastas = new List<PublicacionSubasta>();
@@ -509,6 +513,7 @@
                     listaSubastas.Add(publicacionSubasta);
                 }
             }
+            listaSubastas.Sort();
             return listaSubastas;
         }
     }

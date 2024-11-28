@@ -13,19 +13,48 @@ namespace MVC.Controllers
         {
             try
             {
-                int idUsuario = (int)HttpContext.Session.GetInt32("idUsuarioCliente");
-                Usuario usuario = Sistema.Instancia.BuscarUsuarioPorId(idUsuario);
-                if (HttpContext.Session.GetInt32("idUsuarioCliente") != null && usuario != null && usuario is UsuarioCliente)
+                if (HttpContext.Session.GetInt32("idUsuarioCliente") != null)
                 {
-                    ViewBag.ListaPublicaciones = Sistema.Instancia.Publicaciones;
-                    return View();
+                    int idUsuario = (int)HttpContext.Session.GetInt32("idUsuarioCliente");
+                    Usuario usuario = Sistema.Instancia.BuscarUsuarioPorId(idUsuario);
+                    if (usuario != null && usuario is UsuarioCliente)
+                    {
+                        ViewBag.ListaPublicaciones = Sistema.Instancia.Publicaciones;
+                        return View();
+                    }
                 }
             }
             catch (Exception ex)
             {
 
             }
+            return RedirectToAction("Login", "Home");
+        }
 
+        /// <summary>
+        /// Muestra la lista de subastas ordenadas por fecha de publicación
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        public IActionResult MostrarListaSubastas()
+        {
+            try
+            {
+                if (HttpContext.Session.GetInt32("idUsuarioCliente") != null)
+                {
+                    int idUsuario = (int)HttpContext.Session.GetInt32("idUsuarioCliente");
+                    Usuario usuario = Sistema.Instancia.BuscarUsuarioPorId(idUsuario);
+                    if (usuario != null && usuario is not UsuarioCliente)
+                    {
+                        ViewBag.ListaPublicacionesSubasta = Sistema.Instancia.DevolverPublicacionesDeTipoSubasta();
+                        return View();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
             return RedirectToAction("Login", "Home");
         }
     }

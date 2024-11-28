@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewData["Title"] = "MostrarListaSubastas";
+}
+
+<h1>Lista de subastas</h1>
+@if (ViewBag.ListaPublicacionesSubasta != null && ViewBag.ListaPublicacionesSubasta.Count > 0)
+{
+    <table>
+        <thead>
+            <th>Nombre</th>
+            <th>Tipo</th>
+            <th>Fecha de publicación</th>
+            <th>Estado</th>
+            <th>Precio</th>
+        </thead>
+        <tbody>
+            @foreach (LogicaNegocio.PublicacionSubasta publicacionSubasta in ViewBag.ListaPublicacionesSubasta)
+            {
+                <tr>
+                    <td>@publicacionSubasta.Nombre</td>
+                    <td>@publicacionSubasta.Estado</td>
+                    <td>@publicacionSubasta.FechaPublicacion.ToShortDateString()</td>
+                    <td>@publicacionSubasta.Estado</td>
+                    <td>@publicacionSubasta.Precio</td>
+                    @if (publicacionSubasta.Estado.Trim().ToUpper() == "ABIERTA")
+                    {
+                        <td><a href="/Publicacion/MostrarListaSubastas">Cerrar</a></td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No existen Publicaciones en el sistema</p>
+}
+

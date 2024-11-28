@@ -1,6 +1,6 @@
 ﻿namespace LogicaNegocio
 {
-    public class PublicacionSubasta : Publicacion
+    public class PublicacionSubasta : Publicacion, IComparable<PublicacionSubasta>
     {
         private List<Oferta> _ofertas = new List<Oferta>();
 
@@ -37,6 +37,11 @@
                 _ofertas.Sort();
                 Precio = _ofertas[0].Monto;
             }
+        }
+
+        public int CompareTo(PublicacionSubasta? other)
+        {
+            return FechaPublicacion.CompareTo(other.FechaPublicacion) * -1;
         }
     }
 }

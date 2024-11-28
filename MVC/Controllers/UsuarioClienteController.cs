@@ -44,20 +44,22 @@ namespace MVC.Controllers
         {
             try
             {
-                int idUsuario = (int)HttpContext.Session.GetInt32("idUsuarioCliente");
-                Usuario usuario = Sistema.Instancia.BuscarUsuarioPorId(idUsuario);
-                if (HttpContext.Session.GetInt32("idUsuarioCliente") != null && usuario != null && usuario is UsuarioCliente)
+                if (HttpContext.Session.GetInt32("idUsuarioCliente") != null)
                 {
-                    UsuarioCliente usuarioCliente = (UsuarioCliente)usuario;
-                    ViewBag.SaldoUsuarioCliente = usuarioCliente.Saldo;
-                    return View();
+                    int idUsuario = (int)HttpContext.Session.GetInt32("idUsuarioCliente");
+                    Usuario usuario = Sistema.Instancia.BuscarUsuarioPorId(idUsuario);
+                    if (usuario != null && usuario is UsuarioCliente)
+                    {
+                        UsuarioCliente usuarioCliente = (UsuarioCliente)usuario;
+                        ViewBag.SaldoUsuarioCliente = usuarioCliente.Saldo;
+                        return View();
+                    }
                 }
             }
             catch (Exception ex)
             {
 
             }
-
             return RedirectToAction("Index", "Home");
         }
 
@@ -66,26 +68,29 @@ namespace MVC.Controllers
         {
             try
             {
-                if (montoACargar > 0)
+                if (HttpContext.Session.GetInt32("idUsuarioCliente") != null)
                 {
-                    int idUsuario = (int)HttpContext.Session.GetInt32("idUsuarioCliente");
-                    Usuario usuario = Sistema.Instancia.BuscarUsuarioPorId(idUsuario);
-                    if (HttpContext.Session.GetInt32("idUsuarioCliente") != null && usuario != null && usuario is UsuarioCliente)
+                    if (montoACargar > 0)
                     {
-                        UsuarioCliente usuarioCliente = (UsuarioCliente)usuario;
-                        Sistema.Instancia.CargarSaldoAUsuarioCliente(usuarioCliente, montoACargar);
-                        ViewBag.SaldoUsuarioCliente = usuarioCliente.Saldo;
-                        ViewBag.Mensaje = "Se cargo saldo exitosamente";
-                        return View();
+                        int idUsuario = (int)HttpContext.Session.GetInt32("idUsuarioCliente");
+                        Usuario usuario = Sistema.Instancia.BuscarUsuarioPorId(idUsuario);
+                        if (usuario != null && usuario is UsuarioCliente)
+                        {
+                            UsuarioCliente usuarioCliente = (UsuarioCliente)usuario;
+                            Sistema.Instancia.CargarSaldoAUsuarioCliente(usuarioCliente, montoACargar);
+                            ViewBag.SaldoUsuarioCliente = usuarioCliente.Saldo;
+                            ViewBag.Mensaje = "Se cargo saldo exitosamente";
+                            return View();
+                        }
                     }
-                }
-                else
-                {
-                    int idUsuario = (int)HttpContext.Session.GetInt32("idUsuarioCliente");
-                    Usuario usuario = Sistema.Instancia.BuscarUsuarioPorId(idUsuario);
-                    UsuarioCliente usuarioCliente = (UsuarioCliente)usuario;
-                    ViewBag.SaldoUsuarioCliente = usuarioCliente.Saldo;
-                    ViewBag.Mensaje = "Los datos no son correctos";
+                    else
+                    {
+                        int idUsuario = (int)HttpContext.Session.GetInt32("idUsuarioCliente");
+                        Usuario usuario = Sistema.Instancia.BuscarUsuarioPorId(idUsuario);
+                        UsuarioCliente usuarioCliente = (UsuarioCliente)usuario;
+                        ViewBag.SaldoUsuarioCliente = usuarioCliente.Saldo;
+                        ViewBag.Mensaje = "Los datos no son correctos";
+                    }
                 }
             }
             catch (Exception ex) { }

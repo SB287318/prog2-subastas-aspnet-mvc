@@ -56,6 +56,13 @@
                             </li>
                         }
 
+                        @if (Context.Session.GetInt32("idUsuarioCliente") != null && Sistema.Instancia.BuscarUsuarioPorId((int)Context.Session.GetInt32("idUsuarioCliente")) is not UsuarioCliente)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Publicacion" asp-action="MostrarListaSubastas">Lista subastas</a>
+                            </li>
+                        }
+
                     </ul>
                 </div>
             </div>
