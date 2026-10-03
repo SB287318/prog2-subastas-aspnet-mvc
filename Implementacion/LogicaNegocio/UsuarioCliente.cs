@@ -49,9 +49,18 @@ namespace LogicaNegocio
             }
         }
 
+        /// <summary>
+        /// Carga saldo
+        /// </summary>
+        /// <param name="montoACargar"></param>
         public void CargarSaldo(double montoACargar)
         {
             _saldoDisponible += montoACargar;
+        }
+
+        public void CobrarSaldo(double montoACobrar)
+        {
+            _saldoDisponible -= montoACobrar;
         }
     }
 }

@@ -19,6 +19,14 @@
                     <td>@publicacion.Nombre</td>
                     <td>@publicacion.Estado</td>
                     <td>@publicacion.Precio</td>
+                    @if (publicacion.Estado.Trim().ToUpper() == "ABIERTA")
+                    {
+                        @if (publicacion is LogicaNegocio.PublicacionVenta)
+                        {
+                            <td><a href="/Publicacion/CompraDePublicacion(@publicacion)">Comprar</a></td>
+                        }
+                        
+                    }
                 </tr>
             }
         </tbody>

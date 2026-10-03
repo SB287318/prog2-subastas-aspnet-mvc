@@ -497,7 +497,20 @@
                 usuarioCliente.CargarSaldo(montoACargar);
             }
         }
-        
+
+        /// <summary>
+        /// Metodo que resta saldo al UsuarioCliente
+        /// </summary>
+        /// <param name="usuarioCliente"></param>
+        /// <param name="montoACargar"></param>
+        public void CobrarSaldoAUsuarioCliente(UsuarioCliente usuarioCliente, double montoACobrar)
+        {
+            if (usuarioCliente != null && usuarioCliente is UsuarioCliente && montoACobrar > 0)
+            {
+                usuarioCliente.CobrarSaldo(montoACobrar);
+            }
+        }
+
         /// <summary>
         /// Devuelve todas las subastas ordenadas por fecha
         /// </summary>
@@ -516,5 +529,16 @@
             listaSubastas.Sort();
             return listaSubastas;
         }
+
+        /// <summary>
+        /// Finaliza una publicacion de tipo venta
+        /// </summary>
+        /// <param name="usuarioCliente"></param>
+        /// <param name="publicacion"></param>
+        /*public void FinalizarPublicacionVenta(UsuarioCliente usuarioCliente, Publicacion publicacion, DateTime fechaFinalizada)
+        {
+            CobrarSaldoAUsuarioCliente(usuarioCliente, publicacion.Precio);
+            publicacion.ProcesarDatosDePublicacionFinalizada();
+        }*/
     }
 }

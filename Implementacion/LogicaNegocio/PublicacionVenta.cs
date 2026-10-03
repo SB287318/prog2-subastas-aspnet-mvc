@@ -43,5 +43,14 @@ namespace LogicaNegocio
             }
             Precio =  precio;
         }
+
+     
+        public override void ProcesarDatosDePublicacionFinalizada(UsuarioCliente usuarioComprador, DateTime fechaFinalizada, UsuarioCliente usuarioFinalizador)
+        {
+            ClienteComprador = usuarioComprador;
+            FechaFinalizacion = fechaFinalizada;
+            UsuarioFinalizador = usuarioComprador;
+            Estado = "CERRADA";
+        }
     }
 }

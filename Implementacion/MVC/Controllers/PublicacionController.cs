@@ -40,9 +40,9 @@ namespace MVC.Controllers
         {
             try
             {
-                if (HttpContext.Session.GetInt32("idUsuarioCliente") != null)
+                if (HttpContext.Session.GetInt32("idUsuarioAdmin") != null)
                 {
-                    int idUsuario = (int)HttpContext.Session.GetInt32("idUsuarioCliente");
+                    int idUsuario = (int)HttpContext.Session.GetInt32("idUsuarioAdmin");
                     Usuario usuario = Sistema.Instancia.BuscarUsuarioPorId(idUsuario);
                     if (usuario != null && usuario is not UsuarioCliente)
                     {
@@ -57,5 +57,42 @@ namespace MVC.Controllers
             }
             return RedirectToAction("Login", "Home");
         }
+
+        /*[HttpPost]
+        public IActionResult MostrarListaSubastas()
+        {
+
+        }*/
+
+        [HttpPost]
+        public IActionResult CompraDePublicacion(Publicacion publicacion) 
+        {
+            try
+            {
+                if (HttpContext.Session.GetInt32("idUsuarioCliente") != null)
+                {
+                    int idUsuario = (int)HttpContext.Session.GetInt32("idUsuarioCliente");
+                    Usuario usuario = Sistema.Instancia.BuscarUsuarioPorId(idUsuario);
+                    if (usuario != null && publicacion != null && publicacion is PublicacionVenta)
+                    {
+                        UsuarioCliente usuarioCliente = (UsuarioCliente)usuario;
+                        if (usuarioCliente.Saldo >= publicacion.Precio)
+                        {
+                            DateTime fechaFinalizada = DateTime.Now;
+
+                           /* Sistema.Instancia.CobrarSaldoAUsuarioCliente(usuarioCliente, publicacion.Precio);*/
+                           
+                            
+                        }
+                    }
+
+                }
+            }
+            catch (Exception ex) { }
+            
+            return View();
+        }
+
+       
     }
 }

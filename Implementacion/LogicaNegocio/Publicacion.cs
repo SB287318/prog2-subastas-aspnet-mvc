@@ -20,6 +20,7 @@ namespace LogicaNegocio
         private DateTime _fechaFinalizada;
         private double _precio;
         public abstract void CalcularPrecio();
+        public abstract void ProcesarDatosDePublicacionFinalizada(UsuarioCliente usuarioComprador, DateTime fechaFinalizada, UsuarioCliente usuarioFinalizador);
 
         /// <summary>
         /// Constructor
@@ -49,6 +50,7 @@ namespace LogicaNegocio
         public string Estado
         {
             get { return _estado; }
+            set { _estado = value; }
         }
 
         public int Id
@@ -72,6 +74,23 @@ namespace LogicaNegocio
             set { _precio = value; }
         }
 
+        public UsuarioCliente ClienteComprador
+        {
+            get { return _usuarioClienteComprador; }
+            set { _usuarioClienteComprador = value; }
+        }
+
+        public DateTime FechaFinalizacion
+        {
+            get { return _fechaFinalizada; }
+            set { _fechaFinalizada = value; }
+        }
+
+        public Usuario UsuarioFinalizador
+        {
+            get { return _usuarioFinalizador; }
+            set { _usuarioFinalizador = value; }
+        }
 
         public override string ToString()
         {
