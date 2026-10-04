@@ -20,12 +20,3 @@ Requiere el **SDK de .NET 8**.
 ```bash
 dotnet run --project Implementacion/MVC
 ```
-
-## Despliegue
-
-Se publicó en Azure App Service (puede que ya no esté activa):
-https://obligatorio2prog2-hdf6gzghh3dtfugv.canadacentral-01.azurewebsites.net/
-
-## Historial
-
-El historial de commits (versiones V1.5 a V17.2, octubre y noviembre de 2024) se conserva en este repo.
